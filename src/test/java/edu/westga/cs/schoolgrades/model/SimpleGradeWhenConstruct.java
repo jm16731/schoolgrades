@@ -10,9 +10,39 @@ import org.junit.jupiter.api.Test;
 class SimpleGradeWhenConstruct {
 
 	@Test
-	void testSimpleGrade() {
+	void testConstructSimpleGradeWithMiddleValueShouldGetMiddleValue() {
 		SimpleGrade grade = new SimpleGrade(87);
 		assertEquals(87, grade.getValue());
+	}
+	
+	@Test
+	void testConstructSimpleGradeWithAnotherMiddleValueShouldReturnOtherMiddleValue() {
+		SimpleGrade grade = new SimpleGrade(954);
+		assertEquals(954, grade.getValue());
+	}
+	
+	@Test
+	void testConstructSimpleGradeWithValueOfZeroShouldGetValueOfZero() {
+		SimpleGrade grade = new SimpleGrade(0);
+		assertEquals(0, grade.getValue());
+	}
+	
+	@Test
+	void testConstructSimpleGradeWithValueOfOneShouldGetValueOfOne() {
+		SimpleGrade grade = new SimpleGrade(1);
+		assertEquals(1, grade.getValue());
+	}
+	
+	@Test
+	void testConstructSimpleGradeWithValueOfZeroPointOneShouldGetValueOfZeroPointOne() {
+		SimpleGrade grade = new SimpleGrade(0.1);
+		assertEquals(0.1, grade.getValue());
+	}
+	
+	@Test
+	void testConstructSimpleGradeWithValueOfIntegerMaxShouldGetValueOfIntegerMax() {
+		SimpleGrade grade = new SimpleGrade(Integer.MAX_VALUE);
+		assertEquals(Integer.MAX_VALUE, grade.getValue());
 	}
 
 }
