@@ -12,8 +12,9 @@ public class SimpleGrade implements Grade {
 	private double value;
 	
 	/**
+	 * Constructs a SimpleGrade with the given value for the grade
 	 * 
-	 * @param value
+	 * @param value		Value of the grade
 	 */
 	public SimpleGrade(double value) {
 		this.setValue(value);
