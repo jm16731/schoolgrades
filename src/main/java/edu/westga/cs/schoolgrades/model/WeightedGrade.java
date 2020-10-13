@@ -29,6 +29,22 @@ public class WeightedGrade implements Grade {
 	 */
 	public WeightedGrade(Grade gradeToBeDecorated, double weight) {
 		this.gradeToBeDecorated = gradeToBeDecorated;
+		this.setWeight(weight);
+	}
+	
+	/**
+	 * The Weight to apply to the Grade. Must be between 0 and 1 (inclusive).
+	 * 
+	 * @param weight						The Weight to apply to the Grade
+	 * 
+	 * @precondition						0 <= weight <= 1
+	 * 
+	 * @throws IllegalArgumentException		If weight's range is invalid
+	 */
+	public void setWeight(double weight) {
+		if (weight < 0 || weight > 1) {
+			throw new IllegalArgumentException("Weight must be between 0 and 1 (inclusive)");
+		}
 		this.weight = weight;
 	}
 
