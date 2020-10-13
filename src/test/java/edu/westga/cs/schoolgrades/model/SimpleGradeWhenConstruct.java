@@ -40,9 +40,9 @@ class SimpleGradeWhenConstruct {
 	}
 	
 	@Test
-	void testConstructSimpleGradeWithValueOfIntegerMaxShouldGetValueOfIntegerMax() {
-		SimpleGrade grade = new SimpleGrade(Integer.MAX_VALUE);
-		assertEquals(Integer.MAX_VALUE, grade.getValue());
+	void testConstructSimpleGradeWithValueOfDoubleMaxShouldGetValueOfIntegerMax() {
+		SimpleGrade grade = new SimpleGrade(Double.MAX_VALUE);
+		assertEquals(Double.MAX_VALUE, grade.getValue());
 	}
 
 }
