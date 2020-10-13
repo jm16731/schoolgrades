@@ -7,7 +7,7 @@ package edu.westga.cs.schoolgrades.model;
  * @author Greg Murrell
  * @version 10/13/2020
  */
-public interface CompositeGradeStrategy {
+public interface CompositeGradingStrategy {
 
 	/**
 	 * 	Calculates the given grades according to the implementing

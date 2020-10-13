@@ -11,12 +11,21 @@ import java.util.ArrayList;
  */
 public class CompositeGrade implements Grade {
 	private final ArrayList<Grade> grades;
+	private CompositeGradingStrategy gradingStrategy;
 	
 	/**
 	 * No-args construction of instance variables
 	 */
 	public CompositeGrade() {
 		this.grades = new ArrayList<Grade>();
+	}
+	
+	public CompositeGrade(CompositeGradingStrategy gradingStrategy) {
+		this.grades = new ArrayList<Grade>();
+	}
+	
+	public void setGradingStrategy(CompositeGradingStrategy gradingStrategy) {
+		this.gradingStrategy = gradingStrategy;
 	}
 	
 	/**
