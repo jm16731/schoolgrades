@@ -26,8 +26,16 @@ public class WeightedGrade implements Grade {
 	 * 
 	 * @param gradeToBeDecorated	The Grade to weigh
 	 * @param weight				How much to weight the grade
+	 * 
+	 * @precondition				gradeToBeDecorated is not null
+	 * 
+	 * @throws NullPointerException	If gradedToBeDecorated is null
 	 */
 	public WeightedGrade(Grade gradeToBeDecorated, double weight) {
+		if (gradeToBeDecorated == null) {
+			throw new NullPointerException("Cannot construct WeightedGrade with a "
+					+ "null value for gradeToBeDecorated");
+		}
 		this.gradeToBeDecorated = gradeToBeDecorated;
 		this.setWeight(weight);
 	}
