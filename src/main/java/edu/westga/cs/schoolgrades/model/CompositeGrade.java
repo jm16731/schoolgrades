@@ -25,6 +25,10 @@ public class CompositeGrade implements Grade {
 	 * Construct a Composite grade according to the given CompositeGradingStrategy
 	 * 
 	 * @param gradingStrategy		The CompositeGradingStrategy for grading
+	 * 
+	 * @precondition				gradingStrategy is not null
+	 * 
+	 * @throws NullPointerException	If gradingStrategy is null
 	 */
 	public CompositeGrade(CompositeGradingStrategy gradingStrategy) {
 		this.grades = new ArrayList<Grade>();
@@ -35,8 +39,15 @@ public class CompositeGrade implements Grade {
 	 * Sets the CompositeGradingStrategy to the given gradingStrategy
 	 * 
 	 * @param gradingStrategy		The new CompositeGradingStrategy
+	 * 
+	 * @precondition				gradingStrategy is not null
+	 * 
+	 * @throws NullPointerException	If gradingStrategy is null
 	 */
 	public void setGradingStrategy(CompositeGradingStrategy gradingStrategy) {
+		if (gradingStrategy == null) {
+			throw new NullPointerException("CompositeGrade's gradingStrategy cannot be null");
+		}
 		this.gradingStrategy = gradingStrategy;
 	}
 	
@@ -62,8 +73,15 @@ public class CompositeGrade implements Grade {
 	 * Adds the given Grade into the CompositeGrade
 	 * 
 	 * @param grade		The grade to be absorbed into the collective
+	 * 
+	 * @precondition	grade is not null
+	 * 
+	 * @throws NullPointerException	If grade is null
 	 */
 	public void addGrade(Grade grade) {
+		if (grade == null) {
+			throw new NullPointerException("Cannot add a null grade to CompositeGrade");
+		}
 		this.grades.add(grade);
 	}
 	
