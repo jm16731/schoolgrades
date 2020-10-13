@@ -1,7 +1,7 @@
 package edu.westga.cs.schoolgrades.model;
 
 /**
- * 	This class simply a double value as a student's grade, while providing
+ * 	This class simply wraps a double value as a student's grade, while providing
  * an implementation of the Grade interface.
  * 
  * @author Greg Murrell
