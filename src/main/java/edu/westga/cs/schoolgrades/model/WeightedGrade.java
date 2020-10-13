@@ -18,6 +18,9 @@ public class WeightedGrade implements Grade {
 		this.gradeToBeDecorated = gradeToBeDecorated;
 	}
 
+	/**
+	 * See: {@link Grade#getValue()}
+	 */
 	@Override
 	public double getValue() {
 		// TODO Auto-generated method stub
