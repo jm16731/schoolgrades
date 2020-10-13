@@ -33,7 +33,7 @@ public class SimpleGrade implements Grade {
 	 * 
 	 * @param value		New value of the student's grade
 	 * 
-	 * @precondition	value > 0
+	 * @precondition	value => 0
 	 * 
 	 * @throws IllegalArgumentException		If value's range is invalid
 	 */
