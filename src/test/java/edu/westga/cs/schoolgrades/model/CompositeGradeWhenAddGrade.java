@@ -4,11 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author Greg Murrell
+ * @version 10/13/2020
+ */
 class CompositeGradeWhenAddGrade {
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+	
 
 }
