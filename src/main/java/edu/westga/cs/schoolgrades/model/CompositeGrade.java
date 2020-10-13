@@ -37,6 +37,9 @@ public class CompositeGrade implements Grade {
 		return this.grades;
 	}
 
+	/**
+	 * See: {@link Grade#getValue()}
+	 */
 	@Override
 	public double getValue() {
 		// TODO Auto-generated method stub
