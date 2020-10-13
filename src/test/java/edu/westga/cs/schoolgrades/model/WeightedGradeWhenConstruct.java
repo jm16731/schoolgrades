@@ -10,6 +10,11 @@ import org.junit.jupiter.api.Test;
  */
 class WeightedGradeWhenConstruct {
 
-	
+	@Test
+	public void testWeightedGradeOfSimpleGradeWithDefaultWeight() {
+		SimpleGrade grade = new SimpleGrade(95);
+		WeightedGrade weighted = new WeightedGrade(grade);
+		assertEquals(95, weighted.getValue());
+	}
 
 }
