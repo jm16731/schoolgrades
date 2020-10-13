@@ -1,5 +1,6 @@
 package edu.westga.cs.schoolgrades.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
@@ -40,6 +41,36 @@ class CompositeGradeWhenConstruct {
 		catch (Exception e) {
 			
 		}
+	}
+	
+	@Test
+	public void testListOfGradesIsEmptyAfterNoArgsConstruction() {
+		CompositeGrade grades = new CompositeGrade();
+		assertEquals(true, grades.getListOfGrades().isEmpty());
+	}
+	
+	@Test
+	public void testListOfGradesIsEmptyAfterConstructionWithGradingStrategy() {
+		CompositeGrade grades = new CompositeGrade(new DropLowestGradeGradingStrategy());
+		assertEquals(true, grades.getListOfGrades().isEmpty());
+	}
+	
+	@Test
+	public void testGradingStrategyAfterNoArgsConstructionShouldBeSumOfGrades() {
+		CompositeGrade grades = new CompositeGrade();
+		assertEquals("SumOfGradesGradingStrategy", grades.getGradingStrategy().getClass().getSimpleName());
+	}
+	
+	@Test
+	public void testGradingStrategyAfterConstructionWithAverageOfGradesShouldReturnAverageOfGrades() {
+		CompositeGrade grades = new CompositeGrade(new AverageOfGradesGradingStrategy());
+		assertEquals("AverageOfGradesGradingStrategy", grades.getGradingStrategy().getClass().getSimpleName());
+	}
+	
+	@Test
+	public void testGradingStrategyAfterConstructionWithDropLowestGradeShouldReturnDropLowestGrade() {
+		CompositeGrade grades = new CompositeGrade(new DropLowestGradeGradingStrategy());
+		assertEquals("DropLowestGradeGradingStrategy", grades.getGradingStrategy().getClass().getSimpleName());
 	}
 
 }
