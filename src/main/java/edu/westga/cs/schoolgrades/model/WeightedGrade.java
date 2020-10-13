@@ -8,14 +8,28 @@ package edu.westga.cs.schoolgrades.model;
  */
 public class WeightedGrade implements Grade {
 	private final Grade gradeToBeDecorated;
+	private double weight;
 	
 	/**
-	 * Constructs a WeightedGrade that weights the given Grade
+	 * 	Constructs a WeightedGrade that weighs the given Grade
+	 * with the default weight of 1.
 	 * 
 	 * @param gradeToBeDecorated	The Grade to weigh
 	 */
 	public WeightedGrade(Grade gradeToBeDecorated) {
+		this(gradeToBeDecorated, 1);
+	}
+	
+	/**
+	 * 	Constructs a WeightedGrade that weighs the given Grade
+	 * with the given weight.
+	 * 
+	 * @param gradeToBeDecorated	The Grade to weigh
+	 * @param weight				How much to weight the grade
+	 */
+	public WeightedGrade(Grade gradeToBeDecorated, double weight) {
 		this.gradeToBeDecorated = gradeToBeDecorated;
+		this.weight = weight;
 	}
 
 	/**
@@ -23,8 +37,7 @@ public class WeightedGrade implements Grade {
 	 */
 	@Override
 	public double getValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.gradeToBeDecorated.getValue() * this.weight;
 	}
 
 }
