@@ -11,53 +11,53 @@ import java.util.ArrayList;
  */
 public class CompositeGrade implements Grade {
 	private final ArrayList<Grade> grades;
-	private CompositeGradingStrategy gradingStrategy;
+	private GradingStrategy strategy;
 	
 	/**
-	 * 	Initializes instance variables, sets a default CompositeGradingStrategy
-	 * as SumOfGradesCompositeGradingStrategy
+	 * 	Initializes instance variables, sets a default GradingStrategy
+	 * as SumOfGradesGradingStrategy
 	 */
 	public CompositeGrade() {
-		this(new SumOfGradesCompositeGradingStrategy());
+		this(new SumOfGradesGradingStrategy());
 	}
 	
 	/**
-	 * Construct a Composite grade according to the given CompositeGradingStrategy
+	 * Construct a Composite grade according to the given GradingStrategy
 	 * 
-	 * @param gradingStrategy		The CompositeGradingStrategy for grading
+	 * @param strategy				The GradingStrategy for grading
 	 * 
-	 * @precondition				gradingStrategy is not null
+	 * @precondition				strategy is not null
 	 * 
-	 * @throws NullPointerException	If gradingStrategy is null
+	 * @throws NullPointerException	If strategy is null
 	 */
-	public CompositeGrade(CompositeGradingStrategy gradingStrategy) {
+	public CompositeGrade(GradingStrategy strategy) {
 		this.grades = new ArrayList<Grade>();
-		this.setGradingStrategy(gradingStrategy);
+		this.setGradingStrategy(strategy);
 	}
 	
 	/**
-	 * Sets the CompositeGradingStrategy to the given gradingStrategy
+	 * Sets the GradingStrategy to the given strategy
 	 * 
-	 * @param gradingStrategy		The new CompositeGradingStrategy
+	 * @param strategy				The new GradingStrategy
 	 * 
-	 * @precondition				gradingStrategy is not null
+	 * @precondition				strategy is not null
 	 * 
-	 * @throws NullPointerException	If gradingStrategy is null
+	 * @throws NullPointerException	If strategy is null
 	 */
-	public void setGradingStrategy(CompositeGradingStrategy gradingStrategy) {
-		if (gradingStrategy == null) {
-			throw new NullPointerException("CompositeGrade's gradingStrategy cannot be null");
+	public void setGradingStrategy(GradingStrategy strategy) {
+		if (strategy == null) {
+			throw new NullPointerException("CompositeGrade's GradingStrategy cannot be null");
 		}
-		this.gradingStrategy = gradingStrategy;
+		this.strategy = strategy;
 	}
 	
 	/**
-	 * Gets this CompositeGrade's CompositeGradingStrategy
+	 * Gets this CompositeGrade's GradingStrategy
 	 * 
-	 * @return		This instance's CompositeGradingStrategy
+	 * @return		This instance's GradingStrategy
 	 */
-	public CompositeGradingStrategy getGradingStrategy() {
-		return this.gradingStrategy;
+	public GradingStrategy getGradingStrategy() {
+		return this.strategy;
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public class CompositeGrade implements Grade {
 	 */
 	@Override
 	public double getValue() {
-		return this.gradingStrategy.calculateGrade(this);
+		return this.strategy.calculateGrade(this);
 	}
 
 }

@@ -7,7 +7,7 @@ package edu.westga.cs.schoolgrades.model;
  * @author Greg
  *
  */
-public class DropLowestGradeStrategyCompositeGradingStrategy implements CompositeGradingStrategy {
+public class DropLowestGradeGradingStrategy implements GradingStrategy {
 
 	@Override
 	public double calculateGrade(CompositeGrade grades) {

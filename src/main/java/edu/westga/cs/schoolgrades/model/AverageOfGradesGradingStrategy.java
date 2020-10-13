@@ -7,7 +7,7 @@ package edu.westga.cs.schoolgrades.model;
  * @author Greg
  *
  */
-public class AverageOfGradesCompositeGradingStrategy implements CompositeGradingStrategy {
+public class AverageOfGradesGradingStrategy implements GradingStrategy {
 
 	@Override
 	public double calculateGrade(CompositeGrade grades) {
