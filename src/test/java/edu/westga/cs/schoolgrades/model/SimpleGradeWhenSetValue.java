@@ -53,9 +53,9 @@ class SimpleGradeWhenSetValue {
 	}
 	
 	@Test
-	public void testSetValueToIntegerMAX() {
-		this.grade.setValue(Integer.MAX_VALUE);
-		assertEquals(Integer.MAX_VALUE, this.grade.getValue());
+	public void testSetValueToDoubleMAX() {
+		this.grade.setValue(Double.MAX_VALUE);
+		assertEquals(Double.MAX_VALUE, this.grade.getValue());
 	}
 
 }
