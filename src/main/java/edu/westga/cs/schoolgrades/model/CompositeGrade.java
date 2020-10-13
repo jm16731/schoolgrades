@@ -70,6 +70,15 @@ public class CompositeGrade implements Grade {
 	}
 	
 	/**
+	 * Adds the given grade as a SimpleGrade into the CompositeGrade
+	 * 
+	 * @param grade		The grade to be absored into the collective
+	 */
+	public void addGrade(double grade) {
+		this.addGrade(new SimpleGrade(grade));
+	}
+	
+	/**
 	 * Adds the given Grade into the CompositeGrade
 	 * 
 	 * @param grade		The grade to be absorbed into the collective
