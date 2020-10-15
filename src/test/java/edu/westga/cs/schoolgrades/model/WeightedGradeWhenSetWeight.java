@@ -18,10 +18,7 @@ class WeightedGradeWhenSetWeight {
 		SimpleGrade grade = new SimpleGrade(95);
 		WeightedGrade weighted = new WeightedGrade(grade);
 		weighted.setWeight(0.35);
-		
-		BigDecimal accurateDouble = new BigDecimal(weighted.getValue());
-		accurateDouble = accurateDouble.setScale(2, RoundingMode.HALF_EVEN);
-		assertEquals(33.25, accurateDouble.doubleValue());
+		assertEquals(33.25, weighted.getValue(), 0.01);
 	}
 	
 	@Test
@@ -29,10 +26,7 @@ class WeightedGradeWhenSetWeight {
 		SimpleGrade grade = new SimpleGrade(95);
 		WeightedGrade weighted = new WeightedGrade(grade);
 		weighted.setWeight(0.67);
-		
-		BigDecimal accurateDouble = new BigDecimal(weighted.getValue());
-		accurateDouble = accurateDouble.setScale(2, RoundingMode.HALF_EVEN);
-		assertEquals(63.65, accurateDouble.doubleValue());
+		assertEquals(63.65, weighted.getValue(), 0.01);
 	}
 	
 	@Test
@@ -40,7 +34,7 @@ class WeightedGradeWhenSetWeight {
 		SimpleGrade grade = new SimpleGrade(95);
 		WeightedGrade weighted = new WeightedGrade(grade);
 		weighted.setWeight(0);
-		assertEquals(0, weighted.getValue());
+		assertEquals(0, weighted.getValue(), 0.01);
 	}
 	
 	@Test
@@ -48,10 +42,7 @@ class WeightedGradeWhenSetWeight {
 		SimpleGrade grade = new SimpleGrade(95);
 		WeightedGrade weighted = new WeightedGrade(grade, 0.01);
 		weighted.setWeight(0.35);
-		
-		BigDecimal accurateDouble = new BigDecimal(weighted.getValue());
-		accurateDouble = accurateDouble.setScale(2, RoundingMode.HALF_EVEN);
-		assertEquals(33.25, accurateDouble.doubleValue());
+		assertEquals(33.25, weighted.getValue(), 0.01);
 	}
 	
 	@Test
@@ -59,10 +50,7 @@ class WeightedGradeWhenSetWeight {
 		SimpleGrade grade = new SimpleGrade(95);
 		WeightedGrade weighted = new WeightedGrade(grade, 0.01);
 		weighted.setWeight(0.67);
-		
-		BigDecimal accurateDouble = new BigDecimal(weighted.getValue());
-		accurateDouble = accurateDouble.setScale(2, RoundingMode.HALF_EVEN);
-		assertEquals(63.65, accurateDouble.doubleValue());
+		assertEquals(63.65, weighted.getValue(), 0.01);
 	}
 	
 	@Test
@@ -70,7 +58,7 @@ class WeightedGradeWhenSetWeight {
 		SimpleGrade grade = new SimpleGrade(95);
 		WeightedGrade weighted = new WeightedGrade(grade, 0.01);
 		weighted.setWeight(0);
-		assertEquals(0, weighted.getValue());
+		assertEquals(0, weighted.getValue(), 0.01);
 	}
 	
 	@Test
@@ -78,7 +66,7 @@ class WeightedGradeWhenSetWeight {
 		SimpleGrade grade = new SimpleGrade(95);
 		WeightedGrade weighted = new WeightedGrade(grade, 0.01);
 		weighted.setWeight(1);
-		assertEquals(95, weighted.getValue());
+		assertEquals(95, weighted.getValue(), 0.01);
 	}
 
 }
