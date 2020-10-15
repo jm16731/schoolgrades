@@ -1,5 +1,6 @@
 package edu.westga.cs.schoolgrades.model;
 
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -56,6 +57,16 @@ class SimpleGradeWhenSetValue {
 	public void testSetValueToDoubleMAX() {
 		this.grade.setValue(Double.MAX_VALUE);
 		assertEquals(Double.MAX_VALUE, this.grade.getValue());
+	}
+	
+	@Test
+	public void testShouldThrowIllegalArgumentExceptionIfTryToSetNegativeGrade() {
+		try {
+			this.grade.setValue(-1);
+			fail("Set the grade to a negative value");
+		} catch (IllegalArgumentException ex) {
+			
+		}
 	}
 
 }

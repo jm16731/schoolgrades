@@ -1,6 +1,7 @@
 package edu.westga.cs.schoolgrades.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -99,6 +100,18 @@ class CompositeGradeWhenAddGrade {
 		assertEquals("SimpleGrade", grades.getListOfGrades().get(4).getClass().getSimpleName());
 		assertEquals(21, grades.getListOfGrades().get(5).getValue());
 		assertEquals("SimpleGrade", grades.getListOfGrades().get(5).getClass().getSimpleName());
+	}
+	
+	@Test
+	public void testShouldThrowANullPointerExceptionIfTryToAddANullGrade() {
+		try {
+			CompositeGrade grades = new CompositeGrade();
+			SimpleGrade grade = null;
+			grades.addGrade(grade);
+			fail("Null grade as added into CompositeGrade");
+		} catch (NullPointerException ex) {
+			
+		}
 	}
 
 }

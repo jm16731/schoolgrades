@@ -1,6 +1,7 @@
 package edu.westga.cs.schoolgrades.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -102,6 +103,17 @@ class WeightedGradeWhenConstruct {
 		SimpleGrade grade = new SimpleGrade(Double.MAX_VALUE);
 		WeightedGrade weighted = new WeightedGrade(grade);
 		assertEquals(Double.MAX_VALUE, weighted.getValue(), 0.01);
+	}
+	
+	@Test
+	public void testShouldThrowNullPointerExceptionIfConstructWithNullGrade() {
+		SimpleGrade grade = null;
+		try {
+			WeightedGrade weighted = new WeightedGrade(grade);
+			fail("Constructed WeightedGrade with null value");
+		} catch (NullPointerException ex) {
+			
+		}
 	}
 
 }
