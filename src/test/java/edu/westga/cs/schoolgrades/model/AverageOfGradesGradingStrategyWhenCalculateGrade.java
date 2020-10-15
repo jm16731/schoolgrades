@@ -2,9 +2,6 @@ package edu.westga.cs.schoolgrades.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 import org.junit.jupiter.api.Test;
 
 /**
@@ -17,7 +14,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 	public void testNoGradesReturnsAverageOfZero() {
 		AverageOfGradesGradingStrategy strategy = new AverageOfGradesGradingStrategy();
 		CompositeGrade grades = new CompositeGrade();
-		assertEquals(0, strategy.calculateGrade(grades));
+		assertEquals(0, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -25,7 +22,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		AverageOfGradesGradingStrategy strategy = new AverageOfGradesGradingStrategy();
 		CompositeGrade grades = new CompositeGrade();
 		grades.addGrade(95);
-		assertEquals(95, strategy.calculateGrade(grades));
+		assertEquals(95, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -33,7 +30,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		AverageOfGradesGradingStrategy strategy = new AverageOfGradesGradingStrategy();
 		CompositeGrade grades = new CompositeGrade();
 		grades.addGrade(43);
-		assertEquals(43, strategy.calculateGrade(grades));
+		assertEquals(43, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -41,7 +38,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		AverageOfGradesGradingStrategy strategy = new AverageOfGradesGradingStrategy();
 		CompositeGrade grades = new CompositeGrade();
 		grades.addGrade(1);
-		assertEquals(1, strategy.calculateGrade(grades));
+		assertEquals(1, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -49,7 +46,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		AverageOfGradesGradingStrategy strategy = new AverageOfGradesGradingStrategy();
 		CompositeGrade grades = new CompositeGrade();
 		grades.addGrade(0);
-		assertEquals(0, strategy.calculateGrade(grades));
+		assertEquals(0, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -58,7 +55,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		CompositeGrade grades = new CompositeGrade();
 		grades.addGrade(50);
 		grades.addGrade(100);
-		assertEquals(75, strategy.calculateGrade(grades));
+		assertEquals(75, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -67,7 +64,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		CompositeGrade grades = new CompositeGrade();
 		grades.addGrade(30);
 		grades.addGrade(80);
-		assertEquals(55, strategy.calculateGrade(grades));
+		assertEquals(55, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -76,10 +73,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		CompositeGrade grades = new CompositeGrade();
 		grades.addGrade(11);
 		grades.addGrade(88);
-		
-		BigDecimal accurateDouble = new BigDecimal(strategy.calculateGrade(grades));
-		accurateDouble = accurateDouble.setScale(2, RoundingMode.HALF_EVEN);
-		assertEquals(49.50, accurateDouble.doubleValue());
+		assertEquals(49.5, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -89,10 +83,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		grades.addGrade(50);
 		grades.addGrade(100);
 		grades.addGrade(75);
-		
-		BigDecimal accurateDouble = new BigDecimal(strategy.calculateGrade(grades));
-		accurateDouble = accurateDouble.setScale(2, RoundingMode.HALF_EVEN);
-		assertEquals(75.00, accurateDouble.doubleValue());
+		assertEquals(75, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -102,10 +93,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		grades.addGrade(83);
 		grades.addGrade(97);
 		grades.addGrade(42);
-		
-		BigDecimal accurateDouble = new BigDecimal(strategy.calculateGrade(grades));
-		accurateDouble = accurateDouble.setScale(2, RoundingMode.HALF_EVEN);
-		assertEquals(74.00, accurateDouble.doubleValue());
+		assertEquals(74, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -115,10 +103,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		grades.addGrade(0);
 		grades.addGrade(89);
 		grades.addGrade(57);
-		
-		BigDecimal accurateDouble = new BigDecimal(strategy.calculateGrade(grades));
-		accurateDouble = accurateDouble.setScale(2, RoundingMode.HALF_EVEN);
-		assertEquals(48.67, accurateDouble.doubleValue());
+		assertEquals(48.67, strategy.calculateGrade(grades), 0.01);
 	}
 	
 	@Test
@@ -134,10 +119,7 @@ class AverageOfGradesGradingStrategyWhenCalculateGrade {
 		grades.addGrade(100);
 		grades.addGrade(99);
 		grades.addGrade(93);
-		
-		BigDecimal accurateDouble = new BigDecimal(strategy.calculateGrade(grades));
-		accurateDouble = accurateDouble.setScale(2, RoundingMode.HALF_EVEN);
-		assertEquals(68.89, accurateDouble.doubleValue());
+		assertEquals(68.89, strategy.calculateGrade(grades), 0.01);
 	}
 
 }
