@@ -51,7 +51,7 @@ class CompositeGradeWhenConstruct {
 	
 	@Test
 	public void testListOfGradesIsEmptyAfterConstructionWithGradingStrategy() {
-		CompositeGrade grades = new CompositeGrade(new DropLowestGradeGradingStrategy());
+		CompositeGrade grades = new CompositeGrade(new DropLowestGradeGradingStrategy(new SumOfGradesGradingStrategy()));
 		assertEquals(true, grades.getListOfGrades().isEmpty());
 	}
 	
@@ -69,7 +69,7 @@ class CompositeGradeWhenConstruct {
 	
 	@Test
 	public void testGradingStrategyAfterConstructionWithDropLowestGradeShouldReturnDropLowestGrade() {
-		CompositeGrade grades = new CompositeGrade(new DropLowestGradeGradingStrategy());
+		CompositeGrade grades = new CompositeGrade(new DropLowestGradeGradingStrategy(new SumOfGradesGradingStrategy()));
 		assertEquals("DropLowestGradeGradingStrategy", grades.getGradingStrategy().getClass().getSimpleName());
 	}
 
