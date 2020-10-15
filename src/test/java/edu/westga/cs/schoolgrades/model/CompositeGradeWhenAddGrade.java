@@ -61,5 +61,44 @@ class CompositeGradeWhenAddGrade {
 		assertEquals("CompositeGrade", grades.getListOfGrades().get(2).getClass().getSimpleName());
 		assertEquals("WeightedGrade", grades.getListOfGrades().get(3).getClass().getSimpleName());
 	}
+	
+	@Test
+	public void testAddArrayOfDoublesDoesAddThemInAsSimpleGradesInThatOrderOneGradeOf100() {
+		CompositeGrade grades = new CompositeGrade();
+		double[] values = {100};
+		grades.addGrade(values);
+		assertEquals(100, grades.getListOfGrades().get(0).getValue());
+		assertEquals("SimpleGrade", grades.getListOfGrades().get(0).getClass().getSimpleName());
+	}
+	
+	@Test
+	public void testAddArrayOfDoublesDoesAddThemInAsSimpleGradesInThatOrderTwoGrades() {
+		CompositeGrade grades = new CompositeGrade();
+		double[] values = {100, 97};
+		grades.addGrade(values);
+		assertEquals(100, grades.getListOfGrades().get(0).getValue());
+		assertEquals("SimpleGrade", grades.getListOfGrades().get(0).getClass().getSimpleName());
+		assertEquals(97, grades.getListOfGrades().get(1).getValue());
+		assertEquals("SimpleGrade", grades.getListOfGrades().get(1).getClass().getSimpleName());
+	}
+	
+	@Test
+	public void testAddArrayOfDoublesDoesAddThemInAsSimpleGradesInThatOrderManyGrades() {
+		CompositeGrade grades = new CompositeGrade();
+		double[] values = {100, 97, 93, 55, 43, 21};
+		grades.addGrade(values);
+		assertEquals(100, grades.getListOfGrades().get(0).getValue());
+		assertEquals("SimpleGrade", grades.getListOfGrades().get(0).getClass().getSimpleName());
+		assertEquals(97, grades.getListOfGrades().get(1).getValue());
+		assertEquals("SimpleGrade", grades.getListOfGrades().get(1).getClass().getSimpleName());
+		assertEquals(93, grades.getListOfGrades().get(2).getValue());
+		assertEquals("SimpleGrade", grades.getListOfGrades().get(2).getClass().getSimpleName());
+		assertEquals(55, grades.getListOfGrades().get(3).getValue());
+		assertEquals("SimpleGrade", grades.getListOfGrades().get(3).getClass().getSimpleName());
+		assertEquals(43, grades.getListOfGrades().get(4).getValue());
+		assertEquals("SimpleGrade", grades.getListOfGrades().get(4).getClass().getSimpleName());
+		assertEquals(21, grades.getListOfGrades().get(5).getValue());
+		assertEquals("SimpleGrade", grades.getListOfGrades().get(5).getClass().getSimpleName());
+	}
 
 }
