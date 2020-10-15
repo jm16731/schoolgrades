@@ -45,7 +45,7 @@ public class DropLowestGradeGradingStrategy implements GradingStrategy {
 			values[i] = listOfGrades.get(i).getValue();
 		}
 		java.util.Arrays.sort(values);
-		double[] valuesWithoutLowest = Arrays.copyOfRange(values, 1, values.length - 1);
+		double[] valuesWithoutLowest = Arrays.copyOfRange(values, 1, values.length);
 		
 		CompositeGrade compositeWithoutLowest = new CompositeGrade();
 		compositeWithoutLowest.addGrade(valuesWithoutLowest);
