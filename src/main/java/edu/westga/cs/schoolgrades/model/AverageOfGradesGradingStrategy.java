@@ -16,9 +16,13 @@ public class AverageOfGradesGradingStrategy implements GradingStrategy {
 	 */
 	@Override
 	public double calculateGrade(CompositeGrade grades) {
+		ArrayList<Grade> listOfGrades = grades.getListOfGrades();
+		if (listOfGrades.isEmpty()) {
+			return 0;
+		}
 		double sum = 0;
 		int total = 0;
-		for (Grade grade : grades.getListOfGrades()) {
+		for (Grade grade : listOfGrades) {
 			sum += grade.getValue();
 			total++;
 		}
