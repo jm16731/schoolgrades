@@ -12,8 +12,29 @@ import org.junit.jupiter.api.Test;
 class DropLowestGradeGradingStrategyWhenConstruct {
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	public void testConstructCompositeGradeWithGivenGradingStrategyShouldConstruct() {
+		try {
+			DropLowestGradeGradingStrategy decoratedSum = 
+				new DropLowestGradeGradingStrategy(new SumOfGradesGradingStrategy());
+			DropLowestGradeGradingStrategy decoratedAverage = 
+				new DropLowestGradeGradingStrategy(new AverageOfGradesGradingStrategy());
+			DropLowestGradeGradingStrategy decoratedDecoratedAverage = 
+				new DropLowestGradeGradingStrategy(new DropLowestGradeGradingStrategy(
+					new AverageOfGradesGradingStrategy()));
+		}
+		catch (Exception e) {
+			fail("DropLowestGradeGradingStrategy constructor failed");
+		}
 	}
-
+	
+	@Test
+	public void testConstructCompositeGradeWithNullGradingStrategyShouldNotConstruct() {
+		try {
+			DropLowestGradeGradingStrategy grades = new DropLowestGradeGradingStrategy(null);
+			fail("DropLowestGradeGradingStrategy was constructed with null GradingStrategy");
+		}
+		catch (Exception e) {
+			
+		}
+	}
 }
