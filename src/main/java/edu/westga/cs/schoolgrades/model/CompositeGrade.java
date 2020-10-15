@@ -72,10 +72,21 @@ public class CompositeGrade implements Grade {
 	/**
 	 * Adds the given grade as a SimpleGrade into the CompositeGrade
 	 * 
-	 * @param grade		The grade to be absored into the collective
+	 * @param grade		The grade to be absorbed into the collective
 	 */
 	public void addGrade(double grade) {
 		this.addGrade(new SimpleGrade(grade));
+	}
+	
+	/**
+	 * Adds the given array of grades as SimpleGrades into the CompositeGrade
+	 * 
+	 * @param grades	The grades to be absorbed into the collective
+	 */
+	public void addGrade(double[] grades) {
+		for (double grade : grades) {
+			this.addGrade(new SimpleGrade(grade));
+		}
 	}
 	
 	/**
