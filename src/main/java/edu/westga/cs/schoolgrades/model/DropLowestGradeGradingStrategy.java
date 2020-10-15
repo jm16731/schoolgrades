@@ -36,6 +36,9 @@ public class DropLowestGradeGradingStrategy implements GradingStrategy {
 	@Override
 	public double calculateGrade(CompositeGrade grades) {
 		ArrayList<Grade> listOfGrades = grades.getListOfGrades();
+		if (listOfGrades.size() <= 1) {
+			return this.gradingStrategyToBeDecorated.calculateGrade(grades);
+		}
 		
 		double[] values = new double[listOfGrades.size()];
 		for (int i = 0; i < listOfGrades.size(); i++) {
