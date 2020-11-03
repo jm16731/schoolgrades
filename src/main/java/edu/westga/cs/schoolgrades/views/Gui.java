@@ -15,6 +15,10 @@ public class Gui extends GuiWindowBuilderLayout {
 		this.tableQuiz.setModel(this.controller.getTableQuizModel());
 		this.tableHomework.setModel(this.controller.getTableHomeworkModel());
 		this.tableExam.setModel(this.controller.getTableExamModel());
+		
+		this.spinnerQuizWeight.setModel(this.controller.getSpinnerQuizWeightModel());
+		this.spinnerHomeworkWeight.setModel(this.controller.getSpinnerHomeworkWeightModel());
+		this.spinnerExamWeight.setModel(this.controller.getSpinnerExamWeightModel());
 
 		this.setMouseListeners();
 		this.setActionListeners();

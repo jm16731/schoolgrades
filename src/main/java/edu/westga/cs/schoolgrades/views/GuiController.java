@@ -1,5 +1,6 @@
 package edu.westga.cs.schoolgrades.views;
 
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,10 +14,18 @@ public class GuiController {
 	private DefaultTableModel tableHomeworkModel;
 	private DefaultTableModel tableExamModel;
 	
+	private SpinnerNumberModel spinnerQuizWeightModel;
+	private SpinnerNumberModel spinnerHomeworkWeightModel;
+	private SpinnerNumberModel spinnerExamWeightModel;
+	
 	GuiController() {
 		this.tableQuizModel = new DefaultTableModel();
 		this.tableHomeworkModel = new DefaultTableModel();
 		this.tableExamModel = new DefaultTableModel();
+		
+		this.spinnerQuizWeightModel = new SpinnerNumberModel();
+		this.spinnerHomeworkWeightModel = new SpinnerNumberModel();
+		this.spinnerExamWeightModel = new SpinnerNumberModel();
 	}
 	
 	public DefaultTableModel getTableQuizModel() {
@@ -29,6 +38,18 @@ public class GuiController {
 	
 	public DefaultTableModel getTableExamModel() {
 		return this.tableExamModel;
+	}
+	
+	public SpinnerNumberModel getSpinnerQuizWeightModel() {
+		return this.spinnerQuizWeightModel;
+	}
+	
+	public SpinnerNumberModel getSpinnerHomeworkWeightModel() {
+		return this.spinnerHomeworkWeightModel;
+	}
+	
+	public SpinnerNumberModel getSpinnerExamWeightModel() {
+		return this.spinnerExamWeightModel;
 	}
 
 	/**

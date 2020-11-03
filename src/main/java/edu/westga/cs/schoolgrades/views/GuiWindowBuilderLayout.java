@@ -28,6 +28,9 @@ public class GuiWindowBuilderLayout extends JFrame {
 	protected JTextField textFieldHomeworkSubtotal;
 	protected JTextField textFieldExamSubtotal;
 	protected JTextField textFieldFinalGrade;
+	protected JSpinner spinnerQuizWeight;
+	protected JSpinner spinnerHomeworkWeight;
+	protected JSpinner spinnerExamWeight;
 	
 	public GuiWindowBuilderLayout() {
 		setPreferredSize(new Dimension(730, 680));
@@ -75,15 +78,15 @@ public class GuiWindowBuilderLayout extends JFrame {
 		this.tableExam.setBounds(663, 319, -98, -231);
 		getContentPane().add(this.tableExam);
 		
-		JSpinner spinnerQuizWeight = new JSpinner();
+		spinnerQuizWeight = new JSpinner();
 		spinnerQuizWeight.setBounds(189, 363, 114, 20);
 		getContentPane().add(spinnerQuizWeight);
 		
-		JSpinner spinnerHomeworkWeight = new JSpinner();
+		spinnerHomeworkWeight = new JSpinner();
 		spinnerHomeworkWeight.setBounds(353, 363, 161, 20);
 		getContentPane().add(spinnerHomeworkWeight);
 		
-		JSpinner spinnerExamWeight = new JSpinner();
+		spinnerExamWeight = new JSpinner();
 		spinnerExamWeight.setBounds(554, 363, 114, 20);
 		getContentPane().add(spinnerExamWeight);
 		
