@@ -12,9 +12,10 @@ import javax.swing.JSpinner;
 import javax.swing.JTextPane;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import java.awt.Dimension;
 
 public class GuiWindowBuilderLayout extends JFrame {
-	private JButton btnAddQuiz;
 	private JButton btnAddHomework;
 	private JButton btnAddExam;
 	protected JLabel lblQuizzes;
@@ -29,6 +30,8 @@ public class GuiWindowBuilderLayout extends JFrame {
 	protected JTextField textFieldFinalGrade;
 	
 	public GuiWindowBuilderLayout() {
+		setPreferredSize(new Dimension(730, 680));
+		setSize(new Dimension(730, 680));
 		getContentPane().setLayout(null);
 		
 		btnAddExam = new JButton("Add Exam");
@@ -44,12 +47,6 @@ public class GuiWindowBuilderLayout extends JFrame {
 		this.btnAddHomework.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAddHomework.setBounds(353, 46, 161, 30);
 		getContentPane().add(btnAddHomework);
-		
-		btnAddQuiz = new JButton("Add Quiz");
-		this.btnAddQuiz.setBackground(Color.WHITE);
-		this.btnAddQuiz.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnAddQuiz.setBounds(189, 46, 114, 30);
-		getContentPane().add(btnAddQuiz);
 		
 		this.lblQuizzes = new JLabel("Quizzes");
 		this.lblQuizzes.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -129,5 +126,10 @@ public class GuiWindowBuilderLayout extends JFrame {
 		this.textFieldFinalGrade.setBounds(554, 552, 106, 20);
 		getContentPane().add(this.textFieldFinalGrade);
 		this.textFieldFinalGrade.setColumns(10);
+		
+		JButton btnAddQuiz = new JButton("Add Quiz");
+		btnAddQuiz.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnAddQuiz.setBounds(189, 46, 114, 30);
+		getContentPane().add(btnAddQuiz);
 	}
 }
