@@ -1,5 +1,10 @@
 package edu.westga.cs.schoolgrades.views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import edu.westga.cs.schoolgrades.model.SimpleGrade;
+
 /**
  * User configuration of the GUI
  * 
@@ -34,6 +39,14 @@ public class Gui extends GuiWindowBuilderLayout {
 	}
 	
 	private void setActionListeners() {
-		
+		this.btnAddQuiz.addActionListener(e -> {
+			Gui.this.controller.getTableQuizModel().addRow(new SimpleGrade(0));
+		});
+		this.btnAddHomework.addActionListener(e -> {
+			Gui.this.controller.getTableHomeworkModel().addRow(new SimpleGrade(0));
+		});
+		this.btnAddExam.addActionListener(e -> {
+			Gui.this.controller.getTableExamModel().addRow(new SimpleGrade(0));
+		});
 	}
 }

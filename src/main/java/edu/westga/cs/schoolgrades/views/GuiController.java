@@ -12,9 +12,9 @@ import javax.swing.text.PlainDocument;
  * @version 11/03/2020
  */
 public class GuiController {
-	private TableModel tableQuizModel;
-	private TableModel tableHomeworkModel;
-	private TableModel tableExamModel;
+	private GradeTableModel tableQuizModel;
+	private GradeTableModel tableHomeworkModel;
+	private GradeTableModel tableExamModel;
 	
 	private SpinnerNumberModel spinnerQuizWeightModel;
 	private SpinnerNumberModel spinnerHomeworkWeightModel;
@@ -40,15 +40,15 @@ public class GuiController {
 		this.finalGradeModel = new PlainDocument();
 	}
 	
-	public TableModel getTableQuizModel() {
+	public GradeTableModel getTableQuizModel() {
 		return this.tableQuizModel;
 	}
 	
-	public TableModel getTableHomeworkModel() {
+	public GradeTableModel getTableHomeworkModel() {
 		return this.tableHomeworkModel;
 	}
 	
-	public TableModel getTableExamModel() {
+	public GradeTableModel getTableExamModel() {
 		return this.tableExamModel;
 	}
 	
