@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import java.awt.Dimension;
 import javax.swing.ListSelectionModel;
+import javax.swing.JScrollPane;
 
 public class GuiWindowBuilderLayout extends JFrame {
 	protected JButton btnAddHomework;
@@ -37,6 +38,9 @@ public class GuiWindowBuilderLayout extends JFrame {
 	protected JLabel lblFinalGrade;
 	protected JCheckBox chckbxDropLowestGrade;
 	protected JButton btnAddQuiz;
+	protected JScrollPane scrollPaneQuiz;
+	protected JScrollPane scrollPaneHomework;
+	protected JScrollPane scrollPaneExam;
 	
 	public GuiWindowBuilderLayout() {
 		setPreferredSize(new Dimension(730, 680));
@@ -74,26 +78,35 @@ public class GuiWindowBuilderLayout extends JFrame {
 		this.lblExams.setBounds(554, 21, 48, 14);
 		getContentPane().add(this.lblExams);
 		
+		scrollPaneQuiz = new JScrollPane();
+		scrollPaneQuiz.setBounds(299, 319, -109, -243);
+		getContentPane().add(scrollPaneQuiz);
+		
 		this.tableQuiz = new JTable();
+		scrollPaneQuiz.setViewportView(this.tableQuiz);
 		this.tableQuiz.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.tableQuiz.setFillsViewportHeight(true);
 		this.tableQuiz.setToolTipText("Table of all student's quizzes");
-		this.tableQuiz.setBounds(299, 319, -109, -243);
-		getContentPane().add(this.tableQuiz);
+		
+		scrollPaneHomework = new JScrollPane();
+		scrollPaneHomework.setBounds(513, 318, -149, -230);
+		getContentPane().add(scrollPaneHomework);
 		
 		this.tableHomework = new JTable();
+		scrollPaneHomework.setViewportView(this.tableHomework);
 		this.tableHomework.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.tableHomework.setFillsViewportHeight(true);
 		this.tableHomework.setToolTipText("Table of all of student's homework");
-		this.tableHomework.setBounds(513, 318, -149, -230);
-		getContentPane().add(this.tableHomework);
+		
+		scrollPaneExam = new JScrollPane();
+		scrollPaneExam.setBounds(663, 319, -98, -231);
+		getContentPane().add(scrollPaneExam);
 		
 		this.tableExam = new JTable();
+		scrollPaneExam.setViewportView(this.tableExam);
 		this.tableExam.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.tableExam.setFillsViewportHeight(true);
 		this.tableExam.setToolTipText("Table of all of student's exams");
-		this.tableExam.setBounds(663, 319, -98, -231);
-		getContentPane().add(this.tableExam);
 		
 		spinnerQuizWeight = new JSpinner();
 		this.spinnerQuizWeight.setToolTipText("Change how much quizzes are weighed for the final grade");
