@@ -27,9 +27,9 @@ public class GuiController {
 	private Document finalGradeModel;
 	
 	GuiController() {
-		this.tableQuizModel = new DefaultTableModel();
-		this.tableHomeworkModel = new DefaultTableModel();
-		this.tableExamModel = new DefaultTableModel();
+		this.tableQuizModel = new DefaultTableModel(0, 1);
+		this.tableHomeworkModel = new DefaultTableModel(0, 1);
+		this.tableExamModel = new DefaultTableModel(0, 1);
 		
 		this.spinnerQuizWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
 		this.spinnerHomeworkWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
