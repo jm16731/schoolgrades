@@ -113,10 +113,10 @@ public class GuiWindowBuilderLayout extends JFrame {
 		lblSubtotal.setBounds(84, 400, 66, 14);
 		getContentPane().add(lblSubtotal);
 		
-		chckbxDropLowestGrade = new JCheckBox("Drop Lowest Grade?");
-		this.chckbxDropLowestGrade.setToolTipText("Should you drop the lowest quiz grade, lowest homework grade, and lowest exam grade?");
+		chckbxDropLowestGrade = new JCheckBox("Drop Lowest Homework?");
+		this.chckbxDropLowestGrade.setToolTipText("Should you drop the lowest homework grade?");
 		chckbxDropLowestGrade.setFont(new Font("Tahoma", Font.BOLD, 12));
-		chckbxDropLowestGrade.setBounds(353, 440, 161, 23);
+		chckbxDropLowestGrade.setBounds(353, 440, 179, 23);
 		getContentPane().add(chckbxDropLowestGrade);
 		
 		lblFinalGrade = new JLabel("Final Grade");
