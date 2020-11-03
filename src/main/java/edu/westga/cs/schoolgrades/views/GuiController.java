@@ -1,7 +1,6 @@
 package edu.westga.cs.schoolgrades.views;
 
 import javax.swing.SpinnerNumberModel;
-import javax.swing.table.TableModel;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
