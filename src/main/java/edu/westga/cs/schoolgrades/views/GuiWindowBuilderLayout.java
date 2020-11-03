@@ -14,6 +14,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import java.awt.Dimension;
+import javax.swing.ListSelectionModel;
 
 public class GuiWindowBuilderLayout extends JFrame {
 	protected JButton btnAddHomework;
@@ -74,16 +75,22 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(this.lblExams);
 		
 		this.tableQuiz = new JTable();
+		this.tableQuiz.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.tableQuiz.setFillsViewportHeight(true);
 		this.tableQuiz.setToolTipText("Table of all student's quizzes");
 		this.tableQuiz.setBounds(299, 319, -109, -243);
 		getContentPane().add(this.tableQuiz);
 		
 		this.tableHomework = new JTable();
+		this.tableHomework.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.tableHomework.setFillsViewportHeight(true);
 		this.tableHomework.setToolTipText("Table of all of student's homework");
 		this.tableHomework.setBounds(513, 318, -149, -230);
 		getContentPane().add(this.tableHomework);
 		
 		this.tableExam = new JTable();
+		this.tableExam.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.tableExam.setFillsViewportHeight(true);
 		this.tableExam.setToolTipText("Table of all of student's exams");
 		this.tableExam.setBounds(663, 319, -98, -231);
 		getContentPane().add(this.tableExam);
