@@ -1,6 +1,7 @@
 package edu.westga.cs.schoolgrades;
 
 import java.net.URL;
+import edu.westga.cs.schoolgrades.views.Gui;
 
 /**
  * Main class for the Babble project
@@ -18,7 +19,8 @@ public class Main {
      * @param args not used
      */
     public static void main(String[] args) {
-        
+        Gui schoolgrades = new Gui();
+        schoolgrades.setVisible(true);
     }
 
 }
