@@ -31,9 +31,9 @@ public class GuiController {
 		this.tableHomeworkModel = new DefaultTableModel();
 		this.tableExamModel = new DefaultTableModel();
 		
-		this.spinnerQuizWeightModel = new SpinnerNumberModel();
-		this.spinnerHomeworkWeightModel = new SpinnerNumberModel();
-		this.spinnerExamWeightModel = new SpinnerNumberModel();
+		this.spinnerQuizWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
+		this.spinnerHomeworkWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
+		this.spinnerExamWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
 		
 		this.quizSubtotalModel = new PlainDocument();
 		this.homeworkSubtotalModel = new PlainDocument();
