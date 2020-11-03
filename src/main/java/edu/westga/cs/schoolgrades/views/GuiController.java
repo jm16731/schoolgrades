@@ -1,7 +1,6 @@
 package edu.westga.cs.schoolgrades.views;
 
 import javax.swing.SpinnerNumberModel;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
@@ -27,9 +26,9 @@ public class GuiController {
 	private Document finalGradeModel;
 	
 	GuiController() {
-		this.tableQuizModel = new DefaultTableModel(0, 1);
-		this.tableHomeworkModel = new DefaultTableModel(0, 1);
-		this.tableExamModel = new DefaultTableModel(0, 1);
+		this.tableQuizModel = new GradeTableModel();
+		this.tableHomeworkModel = new GradeTableModel();
+		this.tableExamModel = new GradeTableModel();
 		
 		this.spinnerQuizWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
 		this.spinnerHomeworkWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
