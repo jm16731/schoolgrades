@@ -1,10 +1,5 @@
 package edu.westga.cs.schoolgrades.views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import edu.westga.cs.schoolgrades.model.SimpleGrade;
-
 /**
  * User configuration of the GUI
  * 
