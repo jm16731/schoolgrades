@@ -39,8 +39,8 @@ public class GradeTableModel extends AbstractTableModel {
 		return this.grade.getListOfGrades().get(rowIndex);
 	}
 	
-	public void addRow(Grade grade) {
-		this.grade.addGrade(grade);
+	public void addRow() {
+		this.grade.addGrade(0);
 	}
 
 }
