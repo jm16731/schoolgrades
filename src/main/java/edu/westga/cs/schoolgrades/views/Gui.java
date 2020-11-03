@@ -19,6 +19,11 @@ public class Gui extends GuiWindowBuilderLayout {
 		this.spinnerQuizWeight.setModel(this.controller.getSpinnerQuizWeightModel());
 		this.spinnerHomeworkWeight.setModel(this.controller.getSpinnerHomeworkWeightModel());
 		this.spinnerExamWeight.setModel(this.controller.getSpinnerExamWeightModel());
+		
+		this.textFieldQuizSubtotal.setDocument(this.controller.getQuizSubtotalModel());
+		this.textFieldHomeworkSubtotal.setDocument(this.controller.getHomeworkSubtotalModel());
+		this.textFieldExamSubtotal.setDocument(this.controller.getExamSubtotalModel());
+		this.textFieldFinalGrade.setDocument(this.controller.getFinalGradeModel());
 
 		this.setMouseListeners();
 		this.setActionListeners();
