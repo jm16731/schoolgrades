@@ -43,12 +43,24 @@ public class GuiController {
 		return this.tableQuizModel;
 	}
 	
+	public void addQuiz() {
+		this.tableQuizModel.addRow();
+	}
+	
 	public GradeTableModel getTableHomeworkModel() {
 		return this.tableHomeworkModel;
 	}
 	
+	public void addHomework() {
+		this.tableHomeworkModel.addRow();
+	}
+	
 	public GradeTableModel getTableExamModel() {
 		return this.tableExamModel;
+	}
+	
+	public void addExam() {
+		this.tableExamModel.addRow();
 	}
 	
 	public SpinnerNumberModel getSpinnerQuizWeightModel() {

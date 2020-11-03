@@ -35,13 +35,13 @@ public class Gui extends GuiWindowBuilderLayout {
 	
 	private void setActionListeners() {
 		this.btnAddQuiz.addActionListener(e -> {
-			Gui.this.controller.getTableQuizModel().addRow();
+			Gui.this.controller.addQuiz();
 		});
 		this.btnAddHomework.addActionListener(e -> {
-			Gui.this.controller.getTableHomeworkModel().addRow();
+			Gui.this.controller.addHomework();
 		});
 		this.btnAddExam.addActionListener(e -> {
-			Gui.this.controller.getTableExamModel().addRow();
+			Gui.this.controller.addExam();
 		});
 	}
 }
