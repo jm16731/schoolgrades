@@ -16,8 +16,8 @@ import javax.swing.UIManager;
 import java.awt.Dimension;
 
 public class GuiWindowBuilderLayout extends JFrame {
-	private JButton btnAddHomework;
-	private JButton btnAddExam;
+	protected JButton btnAddHomework;
+	protected JButton btnAddExam;
 	protected JLabel lblQuizzes;
 	protected JLabel lblHomework;
 	protected JLabel lblExams;
@@ -31,6 +31,11 @@ public class GuiWindowBuilderLayout extends JFrame {
 	protected JSpinner spinnerQuizWeight;
 	protected JSpinner spinnerHomeworkWeight;
 	protected JSpinner spinnerExamWeight;
+	protected JLabel lblWeight;
+	protected JLabel lblSubtotal;
+	protected JLabel lblFinalGrade;
+	protected JCheckBox chckbxDropLowestGrade;
+	protected JButton btnAddQuiz;
 	
 	public GuiWindowBuilderLayout() {
 		setPreferredSize(new Dimension(730, 680));
@@ -90,22 +95,22 @@ public class GuiWindowBuilderLayout extends JFrame {
 		spinnerExamWeight.setBounds(554, 363, 114, 20);
 		getContentPane().add(spinnerExamWeight);
 		
-		JLabel lblWeight = new JLabel("Weight (0.0 - 1.0)");
+		lblWeight = new JLabel("Weight (0.0 - 1.0)");
 		lblWeight.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblWeight.setBounds(36, 366, 114, 14);
 		getContentPane().add(lblWeight);
 		
-		JLabel lblSubtotal = new JLabel("Subtotals");
+		lblSubtotal = new JLabel("Subtotals");
 		lblSubtotal.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblSubtotal.setBounds(84, 400, 66, 14);
 		getContentPane().add(lblSubtotal);
 		
-		JCheckBox chckbxDropLowestGrade = new JCheckBox("Drop Lowest Grade?");
+		chckbxDropLowestGrade = new JCheckBox("Drop Lowest Grade?");
 		chckbxDropLowestGrade.setFont(new Font("Tahoma", Font.BOLD, 12));
 		chckbxDropLowestGrade.setBounds(353, 440, 161, 23);
 		getContentPane().add(chckbxDropLowestGrade);
 		
-		JLabel lblFinalGrade = new JLabel("Final Grade");
+		lblFinalGrade = new JLabel("Final Grade");
 		lblFinalGrade.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblFinalGrade.setBounds(554, 527, 114, 14);
 		getContentPane().add(lblFinalGrade);
@@ -130,7 +135,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(this.textFieldFinalGrade);
 		this.textFieldFinalGrade.setColumns(10);
 		
-		JButton btnAddQuiz = new JButton("Add Quiz");
+		btnAddQuiz = new JButton("Add Quiz");
 		btnAddQuiz.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAddQuiz.setBounds(189, 46, 114, 30);
 		getContentPane().add(btnAddQuiz);
