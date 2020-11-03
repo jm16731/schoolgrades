@@ -43,6 +43,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().setLayout(null);
 		
 		btnAddExam = new JButton("Add Exam");
+		this.btnAddExam.setToolTipText("Add a student's exam grade");
 		this.btnAddExam.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAddExam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -52,6 +53,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(btnAddExam);
 		
 		btnAddHomework = new JButton("Add Homework");
+		this.btnAddHomework.setToolTipText("Add a student's homework grade");
 		this.btnAddHomework.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAddHomework.setBounds(353, 46, 161, 30);
 		getContentPane().add(btnAddHomework);
@@ -72,26 +74,32 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(this.lblExams);
 		
 		this.tableQuiz = new JTable();
+		this.tableQuiz.setToolTipText("Table of all student's quizzes");
 		this.tableQuiz.setBounds(299, 319, -109, -243);
 		getContentPane().add(this.tableQuiz);
 		
 		this.tableHomework = new JTable();
+		this.tableHomework.setToolTipText("Table of all of student's homework");
 		this.tableHomework.setBounds(513, 318, -149, -230);
 		getContentPane().add(this.tableHomework);
 		
 		this.tableExam = new JTable();
+		this.tableExam.setToolTipText("Table of all of student's exams");
 		this.tableExam.setBounds(663, 319, -98, -231);
 		getContentPane().add(this.tableExam);
 		
 		spinnerQuizWeight = new JSpinner();
+		this.spinnerQuizWeight.setToolTipText("Change how much quizzes are weighed for the final grade");
 		spinnerQuizWeight.setBounds(189, 363, 114, 20);
 		getContentPane().add(spinnerQuizWeight);
 		
 		spinnerHomeworkWeight = new JSpinner();
+		this.spinnerHomeworkWeight.setToolTipText("Change how much homework is weighed for the final grade");
 		spinnerHomeworkWeight.setBounds(353, 363, 161, 20);
 		getContentPane().add(spinnerHomeworkWeight);
 		
 		spinnerExamWeight = new JSpinner();
+		this.spinnerExamWeight.setToolTipText("Change how much exams are weighed for the final grade");
 		spinnerExamWeight.setBounds(554, 363, 114, 20);
 		getContentPane().add(spinnerExamWeight);
 		
@@ -106,6 +114,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(lblSubtotal);
 		
 		chckbxDropLowestGrade = new JCheckBox("Drop Lowest Grade?");
+		this.chckbxDropLowestGrade.setToolTipText("Should you drop the lowest quiz grade, lowest homework grade, and lowest exam grade?");
 		chckbxDropLowestGrade.setFont(new Font("Tahoma", Font.BOLD, 12));
 		chckbxDropLowestGrade.setBounds(353, 440, 161, 23);
 		getContentPane().add(chckbxDropLowestGrade);
@@ -116,26 +125,31 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(lblFinalGrade);
 		
 		this.textFieldQuizSubtotal = new JTextField();
+		this.textFieldQuizSubtotal.setToolTipText("The quiz grade subtotal");
 		this.textFieldQuizSubtotal.setBounds(189, 398, 114, 20);
 		getContentPane().add(this.textFieldQuizSubtotal);
 		this.textFieldQuizSubtotal.setColumns(10);
 		
 		this.textFieldHomeworkSubtotal = new JTextField();
+		this.textFieldHomeworkSubtotal.setToolTipText("The homework grade subtotal");
 		this.textFieldHomeworkSubtotal.setBounds(353, 398, 161, 20);
 		getContentPane().add(this.textFieldHomeworkSubtotal);
 		this.textFieldHomeworkSubtotal.setColumns(10);
 		
 		this.textFieldExamSubtotal = new JTextField();
+		this.textFieldExamSubtotal.setToolTipText("The exam grade subtotal");
 		this.textFieldExamSubtotal.setBounds(554, 398, 114, 20);
 		getContentPane().add(this.textFieldExamSubtotal);
 		this.textFieldExamSubtotal.setColumns(10);
 		
 		this.textFieldFinalGrade = new JTextField();
+		this.textFieldFinalGrade.setToolTipText("The final grade");
 		this.textFieldFinalGrade.setBounds(554, 552, 106, 20);
 		getContentPane().add(this.textFieldFinalGrade);
 		this.textFieldFinalGrade.setColumns(10);
 		
 		btnAddQuiz = new JButton("Add Quiz");
+		this.btnAddQuiz.setToolTipText("Add a student's quiz grade");
 		btnAddQuiz.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAddQuiz.setBounds(189, 46, 114, 30);
 		getContentPane().add(btnAddQuiz);
