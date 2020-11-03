@@ -78,12 +78,4 @@ public class GuiController {
 	public Document getFinalGradeModel() {
 		return this.finalGradeModel;
 	}
-
-	/**
-	 * any mouse listeners
-	 */
-	
-	/**
-	 * any action (button) listeners
-	 */
 }
