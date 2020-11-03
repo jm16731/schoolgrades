@@ -1,10 +1,9 @@
 package edu.westga.cs.schoolgrades.views;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.table.AbstractTableModel;
 
+import edu.westga.cs.schoolgrades.model.AverageOfGradesGradingStrategy;
+import edu.westga.cs.schoolgrades.model.CompositeGrade;
 import edu.westga.cs.schoolgrades.model.Grade;
 
 /**
@@ -14,15 +13,16 @@ import edu.westga.cs.schoolgrades.model.Grade;
  * @version 11/03/2020
  */
 public class GradeTableModel extends AbstractTableModel {
-	private List<Grade> rows;
+	private CompositeGrade grade;
 	
 	public GradeTableModel() {
-		this.rows = new ArrayList<Grade>();
+		this.grade = new CompositeGrade(new AverageOfGradesGradingStrategy());
 	}
 	
 	@Override
 	public int getRowCount() {
-		return this.rows.size();
+		//TODO: CompositeGrade should calculate size itself; needs Tests though
+		return this.grade.getListOfGrades().size();
 	}
 
 	@Override
@@ -35,11 +35,12 @@ public class GradeTableModel extends AbstractTableModel {
 		if (rowIndex < 0) {
 			throw new IndexOutOfBoundsException("TableModel cannot return a getValueAt for rowIndex less than zero");
 		}
-		return this.rows.get(rowIndex);
+		//TODO: still looks ugly
+		return this.grade.getListOfGrades().get(rowIndex);
 	}
 	
 	public void addRow(Grade grade) {
-		this.rows.add(grade);
+		this.grade.addGrade(grade);
 	}
 
 }
