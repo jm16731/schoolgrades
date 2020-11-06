@@ -10,7 +10,7 @@ import edu.westga.cs.schoolgrades.model.Grade;
  * Implements the TableModel interface, using Grades as the rows
  * 
  * @author Greg Murrell
- * @version 11/03/2020
+ * @version 11/06/2020
  */
 public class GradeTableModel extends AbstractTableModel {
 	private CompositeGrade grade;
