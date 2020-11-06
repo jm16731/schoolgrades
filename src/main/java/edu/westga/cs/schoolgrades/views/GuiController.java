@@ -1,10 +1,9 @@
 package edu.westga.cs.schoolgrades.views;
 
 import javax.swing.SpinnerNumberModel;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
-
-import edu.westga.cs.schoolgrades.model.Grade;
 
 /**
  * Creates the model objects for the GUI
@@ -16,6 +15,7 @@ public class GuiController {
 	private GradeTableModel tableQuizModel;
 	private GradeTableModel tableHomeworkModel;
 	private GradeTableModel tableExamModel;
+	private GradeTableModel tableFinalGradeModel;
 	
 	private SpinnerNumberModel spinnerQuizWeightModel;
 	private SpinnerNumberModel spinnerHomeworkWeightModel;
@@ -30,19 +30,18 @@ public class GuiController {
 		this.tableQuizModel = new GradeTableModel();
 		this.tableHomeworkModel = new GradeTableModel();
 		this.tableExamModel = new GradeTableModel();
+		this.tableFinalGradeModel = new GradeTableModel();
 		
 		this.tableQuizModel.addTableModelListener(e -> {
-			/**
-			 * 		int row = e.getFirstRow();
-					int type = e.getType();
-					GradeTableModel model = (GradeTableModel) e.getSource();
-					Grade data = (Grade) model.getValueAt(row, 1);
-			 */
+			
 		});
 		this.tableHomeworkModel.addTableModelListener(e -> {
 			
 		});
 		this.tableExamModel.addTableModelListener(e -> {
+			
+		});
+		this.tableFinalGradeModel.addTableModelListener(e -> {
 			
 		});
 		
@@ -96,15 +95,55 @@ public class GuiController {
 		return this.quizSubtotalModel;
 	}
 	
+	public void updateQuizSubtotal() {
+		double subtotal = this.tableQuizModel.getTotalGrade();
+		try {
+			this.quizSubtotalModel.remove(0, this.quizSubtotalModel.getLength());
+			this.quizSubtotalModel.insertString(0, String.valueOf(subtotal), null);
+		} catch (BadLocationException ex) {
+			ex.printStackTrace();
+		}	
+	}
+	
 	public Document getHomeworkSubtotalModel() {
 		return this.homeworkSubtotalModel;
+	}
+	
+	public void updateHomeworkSubtotal() {
+		double subtotal = this.tableHomeworkModel.getTotalGrade();
+		try {
+			this.homeworkSubtotalModel.remove(0, this.homeworkSubtotalModel.getLength());
+			this.homeworkSubtotalModel.insertString(0, String.valueOf(subtotal), null);
+		} catch (BadLocationException ex) {
+			ex.printStackTrace();
+		}	
 	}
 	
 	public Document getExamSubtotalModel() {
 		return this.examSubtotalModel;
 	}
 	
+	public void updateExamSubtotal() {
+		double subtotal = this.tableExamModel.getTotalGrade();
+		try {
+			this.examSubtotalModel.remove(0, this.examSubtotalModel.getLength());
+			this.examSubtotalModel.insertString(0, String.valueOf(subtotal), null);
+		} catch (BadLocationException ex) {
+			ex.printStackTrace();
+		}	
+	}
+	
 	public Document getFinalGradeModel() {
 		return this.finalGradeModel;
+	}
+	
+	public void updateFinalGrade() {
+		double subtotal = this.tableFinalGradeModel.getTotalGrade();
+		try {
+			this.finalGradeModel.remove(0, this.finalGradeModel.getLength());
+			this.finalGradeModel.insertString(0, String.valueOf(subtotal), null);
+		} catch (BadLocationException ex) {
+			ex.printStackTrace();
+		}	
 	}
 }
