@@ -53,5 +53,10 @@ public class GradeTableModel extends AbstractTableModel {
 		this.grade.addGrade(0);
 		this.fireTableDataChanged();
 	}
+	
+	public void setValueAt(Grade value, int row) {
+		this.grade.getListOfGrades().set(row, value);
+		this.fireTableCellUpdated(row, 1);
+	}
 
 }
