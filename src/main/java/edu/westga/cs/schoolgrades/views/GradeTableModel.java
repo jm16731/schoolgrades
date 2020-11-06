@@ -39,11 +39,8 @@ public class GradeTableModel extends AbstractTableModel {
 	
 	@Override
 	public void setValueAt(Object value, int row, int column) {
-		
-	}
-	
-	public void setValueAt(Grade value, int row) {
-		this.grade.getListOfGrades().set(row, value);
+		this.grade.removeGrade(row);
+		this.grade.addGrade((Grade) value, row);
 		this.fireTableDataChanged();
 	}
 	
