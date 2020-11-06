@@ -5,7 +5,8 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
-import edu.westga.cs.schoolgrades.model.SimpleGrade;
+import edu.westga.cs.schoolgrades.model.AverageOfGradesGradingStrategy;
+import edu.westga.cs.schoolgrades.model.SumOfGradesGradingStrategy;
 
 /**
  * Creates the model objects for the GUI
@@ -29,10 +30,10 @@ public class GuiController {
 	private Document finalGradeModel;
 	
 	GuiController() {
-		this.tableQuizModel = new GradeTableModel();
-		this.tableHomeworkModel = new GradeTableModel();
-		this.tableExamModel = new GradeTableModel();
-		this.tableFinalGradeModel = new GradeTableModel();
+		this.tableQuizModel = new GradeTableModel(new AverageOfGradesGradingStrategy());
+		this.tableHomeworkModel = new GradeTableModel(new AverageOfGradesGradingStrategy());
+		this.tableExamModel = new GradeTableModel(new AverageOfGradesGradingStrategy());
+		this.tableFinalGradeModel = new GradeTableModel(new SumOfGradesGradingStrategy());
 		
 		this.tableFinalGradeModel.addRow();
 		this.tableFinalGradeModel.addRow();
@@ -109,7 +110,7 @@ public class GuiController {
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}
-		this.tableFinalGradeModel.setValueAt(new SimpleGrade(subtotal), 1, 1);
+		this.tableFinalGradeModel.setValueAt(subtotal, 1, 1);
 	}
 	
 	public Document getHomeworkSubtotalModel() {
@@ -124,7 +125,7 @@ public class GuiController {
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}
-		this.tableFinalGradeModel.setValueAt(new SimpleGrade(subtotal), 2, 1);
+		this.tableFinalGradeModel.setValueAt(subtotal, 2, 1);
 	}
 	
 	public Document getExamSubtotalModel() {
@@ -139,7 +140,7 @@ public class GuiController {
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}
-		this.tableFinalGradeModel.setValueAt(new SimpleGrade(subtotal), 3, 1);
+		this.tableFinalGradeModel.setValueAt(subtotal, 3, 1);
 	}
 	
 	public Document getFinalGradeModel() {

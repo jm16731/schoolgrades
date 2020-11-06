@@ -16,8 +16,8 @@ import edu.westga.cs.schoolgrades.model.Grade;
 public class GradeTableModel extends AbstractTableModel {
 	private CompositeGrade grade;
 	
-	public GradeTableModel() {
-		this.grade = new CompositeGrade();
+	public GradeTableModel(GradingStrategy strategy) {
+		this.grade = new CompositeGrade(strategy);
 	}
 	
 	@Override
@@ -43,6 +43,10 @@ public class GradeTableModel extends AbstractTableModel {
 		this.grade.addGrade((Grade) value, row);
 		this.grade.removeGrade(row + 1);
 		this.fireTableDataChanged();
+	}
+	
+	public void setValueAt(double value, int row, int column) {
+		this.setValueAt(new SimpleGrade(value), row, column);
 	}
 	
 	public void addRow() {
