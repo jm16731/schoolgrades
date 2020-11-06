@@ -37,6 +37,16 @@ public class GradeTableModel extends AbstractTableModel {
 		return this.grade.getListOfGrades().get(rowIndex);
 	}
 	
+	@Override
+	public void setValueAt(Object value, int row, int column) {
+		
+	}
+	
+	public void setValueAt(Grade value, int row) {
+		this.grade.getListOfGrades().set(row, value);
+		this.fireTableDataChanged();
+	}
+	
 	public GradingStrategy getGradingStrategy() {
 		return this.grade.getGradingStrategy();
 	}
@@ -51,11 +61,6 @@ public class GradeTableModel extends AbstractTableModel {
 	
 	public void addRow() {
 		this.grade.addGrade(0);
-		this.fireTableDataChanged();
-	}
-	
-	public void setValueAt(Grade value, int row) {
-		this.grade.getListOfGrades().set(row, value);
 		this.fireTableDataChanged();
 	}
 
