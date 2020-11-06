@@ -113,5 +113,73 @@ class CompositeGradeWhenAddGrade {
 			
 		}
 	}
+	
+	@Test
+	public void testAddGradeAtLocation3DoesAddItAtLocation3() {
+		CompositeGrade grades = new CompositeGrade();
+		double[] values = {100, 97, 93, 55, 43, 21};
+		grades.addGrade(values);
+		grades.addGrade(67, 3);
+		assertEquals(67, grades.getListOfGrades().get(3).getValue());
+	}
+	
+	@Test
+	public void testAddGradeAtLocatio03DoesAddItAtLocation3() {
+		CompositeGrade grades = new CompositeGrade();
+		double[] values = {100, 97, 93, 55, 43, 21};
+		grades.addGrade(values);
+		grades.addGrade(67, 0);
+		assertEquals(67, grades.getListOfGrades().get(0).getValue());
+	}
+	
+	@Test
+	public void testAddGradeAtLocation6Of6DoesAddItAtLocation6() {
+		CompositeGrade grades = new CompositeGrade();
+		double[] values = {100, 97, 93, 55, 43, 21};
+		grades.addGrade(values);
+		grades.addGrade(67, 6);
+		assertEquals(67, grades.getListOfGrades().get(6).getValue());
+	}
+	
+	@Test
+	public void testAddGradeAtLocation3ThruSimpleGradeDoesAddItAtLocation3() {
+		CompositeGrade grades = new CompositeGrade();
+		double[] values = {100, 97, 93, 55, 43, 21};
+		grades.addGrade(values);
+		grades.addGrade(new SimpleGrade(67), 3);
+		assertEquals(67, grades.getListOfGrades().get(3).getValue());
+	}
+	
+	@Test
+	public void testAddGradeAtLocation0ThruSimpleGradeDoesAddItAtLocation0() {
+		CompositeGrade grades = new CompositeGrade();
+		double[] values = {100, 97, 93, 55, 43, 21};
+		grades.addGrade(values);
+		grades.addGrade(new SimpleGrade(67), 0);
+		assertEquals(67, grades.getListOfGrades().get(0).getValue());
+	}
+	
+	@Test
+	public void testAddGradeAtLocation6Of6ThruSimpleGradeDoesAddItAtLocation6() {
+		CompositeGrade grades = new CompositeGrade();
+		double[] values = {100, 97, 93, 55, 43, 21};
+		grades.addGrade(values);
+		grades.addGrade(new SimpleGrade(67), 6);
+		assertEquals(67, grades.getListOfGrades().get(6).getValue());
+	}
+	
+	@Test
+	public void testShouldThrowAnIndexOutOfBoundsExceptionIfTryToAddAGradeInSpotThatIsOutOfIndexBounds() {
+		try {
+			CompositeGrade grades = new CompositeGrade();
+			double[] values = {100, 97, 93, 55, 43, 21};
+			grades.addGrade(values);
+			grades.addGrade(new SimpleGrade(67), -2);
+			grades.addGrade(new SimpleGrade(67), 65535);
+			fail("Null grade as added into CompositeGrade");
+		} catch (IndexOutOfBoundsException ex) {
+			
+		}
+	}
 
 }
