@@ -79,6 +79,18 @@ public class CompositeGrade implements Grade {
 	}
 	
 	/**
+	 * Adds the given grade into the CompositeGrade at the given index
+	 * 
+	 * @param grade		The grade to be absorbed into the collective
+	 * @param index		grade is not null
+	 * 
+	 * @throws IndexOutOfBoundsException	If index < 0 or if index > grades.size()
+	 */
+	public void addGrade(double grade, int index) throws IndexOutOfBoundsException {
+		this.addGrade(new SimpleGrade(grade), index);
+	}
+	
+	/**
 	 * Adds the given array of grades as SimpleGrades into the CompositeGrade
 	 * 
 	 * @param grades	The grades to be absorbed into the collective
@@ -99,10 +111,34 @@ public class CompositeGrade implements Grade {
 	 * @throws NullPointerException	If grade is null
 	 */
 	public void addGrade(Grade grade) {
+		this.addGrade(grade, this.grades.size());
+	}
+	
+	/**
+	 * Adds the given grade into the CompositeGrade at the given index
+	 * 
+	 * @param grade		The grade to be absorbed into the collective
+	 * @param index		grade is not null
+	 * 
+	 * @throws NullPointerException			If grade is null
+	 * @throws IndexOutOfBoundsException	If index < 0 or if index > grades.size()
+	 */
+	public void addGrade(Grade grade, int index) throws NullPointerException, IndexOutOfBoundsException {
 		if (grade == null) {
 			throw new NullPointerException("Cannot add a null grade to CompositeGrade");
 		}
-		this.grades.add(grade);
+		this.grades.add(index, grade);
+	}
+	
+	/**
+	 * Removes the Grade from the CompositeGrade at the given index
+	 * 
+	 * @param index		The index of the grade to free from the collective
+	 * 
+	 * @throws IndexOutOfBoundsException	If index < 0 or if index > grades.size()
+	 */
+	public void removeGrade(int index) throws IndexOutOfBoundsException {
+		this.grades.remove(index);
 	}
 	
 	/**
