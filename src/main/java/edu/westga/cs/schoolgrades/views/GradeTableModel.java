@@ -2,7 +2,7 @@ package edu.westga.cs.schoolgrades.views;
 
 import javax.swing.table.AbstractTableModel;
 
-import edu.westga.cs.schoolgrades.model.AverageOfGradesGradingStrategy;
+import edu.westga.cs.schoolgrades.model.GradingStrategy;
 import edu.westga.cs.schoolgrades.model.CompositeGrade;
 import edu.westga.cs.schoolgrades.model.Grade;
 
@@ -16,12 +16,11 @@ public class GradeTableModel extends AbstractTableModel {
 	private CompositeGrade grade;
 	
 	public GradeTableModel() {
-		this.grade = new CompositeGrade(new AverageOfGradesGradingStrategy());
+		this.grade = new CompositeGrade();
 	}
 	
 	@Override
 	public int getRowCount() {
-		//TODO: CompositeGrade should calculate size itself; needs Tests though
 		return this.grade.getListOfGrades().size();
 	}
 
@@ -35,12 +34,24 @@ public class GradeTableModel extends AbstractTableModel {
 		if (rowIndex < 0) {
 			throw new IndexOutOfBoundsException("TableModel cannot return a getValueAt for rowIndex less than zero");
 		}
-		//TODO: still looks ugly
 		return this.grade.getListOfGrades().get(rowIndex);
+	}
+	
+	public GradingStrategy getGradingStrategy() {
+		return this.grade.getGradingStrategy();
+	}
+	
+	public void setGradingStrategy(GradingStrategy strategy) {
+		this.grade.setGradingStrategy(strategy);
+	}
+	
+	public double getTotalGrade() {
+		return this.grade.getValue();
 	}
 	
 	public void addRow() {
 		this.grade.addGrade(0);
+		this.fireTableDataChanged();
 	}
 
 }
