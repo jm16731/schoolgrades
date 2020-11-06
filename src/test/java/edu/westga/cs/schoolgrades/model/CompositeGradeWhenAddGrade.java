@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * @author Greg Murrell
- * @version 10/13/2020
+ * @version 11/06/2020
  */
 class CompositeGradeWhenAddGrade {
 
