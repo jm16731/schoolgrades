@@ -5,6 +5,8 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
+import edu.westga.cs.schoolgrades.model.SimpleGrade;
+
 /**
  * Creates the model objects for the GUI
  * 
@@ -32,6 +34,10 @@ public class GuiController {
 		this.tableExamModel = new GradeTableModel();
 		this.tableFinalGradeModel = new GradeTableModel();
 		
+		this.tableFinalGradeModel.addRow();
+		this.tableFinalGradeModel.addRow();
+		this.tableFinalGradeModel.addRow();
+		
 		this.tableQuizModel.addTableModelListener(e -> {
 			this.updateQuizSubtotal();
 		});
@@ -42,7 +48,7 @@ public class GuiController {
 			this.updateExamSubtotal();
 		});
 		this.tableFinalGradeModel.addTableModelListener(e -> {
-			
+			this.updateFinalGrade();
 		});
 		
 		this.spinnerQuizWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
@@ -102,7 +108,8 @@ public class GuiController {
 			this.quizSubtotalModel.insertString(0, String.valueOf(subtotal), null);
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
-		}	
+		}
+		this.tableFinalGradeModel.setValueAt(new SimpleGrade(subtotal), 1, 1);
 	}
 	
 	public Document getHomeworkSubtotalModel() {
@@ -116,7 +123,8 @@ public class GuiController {
 			this.homeworkSubtotalModel.insertString(0, String.valueOf(subtotal), null);
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
-		}	
+		}
+		this.tableFinalGradeModel.setValueAt(new SimpleGrade(subtotal), 2, 1);
 	}
 	
 	public Document getExamSubtotalModel() {
@@ -130,7 +138,8 @@ public class GuiController {
 			this.examSubtotalModel.insertString(0, String.valueOf(subtotal), null);
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
-		}	
+		}
+		this.tableFinalGradeModel.setValueAt(new SimpleGrade(subtotal), 3, 1);
 	}
 	
 	public Document getFinalGradeModel() {
