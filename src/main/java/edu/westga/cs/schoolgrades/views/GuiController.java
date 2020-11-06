@@ -33,13 +33,13 @@ public class GuiController {
 		this.tableFinalGradeModel = new GradeTableModel();
 		
 		this.tableQuizModel.addTableModelListener(e -> {
-			
+			this.updateQuizSubtotal();
 		});
 		this.tableHomeworkModel.addTableModelListener(e -> {
-			
+			this.updateHomeworkSubtotal();
 		});
 		this.tableExamModel.addTableModelListener(e -> {
-			
+			this.updateExamSubtotal();
 		});
 		this.tableFinalGradeModel.addTableModelListener(e -> {
 			
