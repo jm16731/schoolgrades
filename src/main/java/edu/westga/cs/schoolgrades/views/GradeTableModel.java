@@ -3,6 +3,7 @@ package edu.westga.cs.schoolgrades.views;
 import javax.swing.table.AbstractTableModel;
 
 import edu.westga.cs.schoolgrades.model.GradingStrategy;
+import edu.westga.cs.schoolgrades.model.SimpleGrade;
 import edu.westga.cs.schoolgrades.model.CompositeGrade;
 import edu.westga.cs.schoolgrades.model.Grade;
 
@@ -44,6 +45,10 @@ public class GradeTableModel extends AbstractTableModel {
 		this.fireTableDataChanged();
 	}
 	
+	public void addRow() {
+		this.setValueAt(new SimpleGrade(0), this.getRowCount(), 1);
+	}
+	
 	public GradingStrategy getGradingStrategy() {
 		return this.grade.getGradingStrategy();
 	}
@@ -54,11 +59,6 @@ public class GradeTableModel extends AbstractTableModel {
 	
 	public double getTotalGrade() {
 		return this.grade.getValue();
-	}
-	
-	public void addRow() {
-		this.grade.addGrade(0);
-		this.fireTableDataChanged();
 	}
 
 }
