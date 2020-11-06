@@ -4,6 +4,8 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
+import edu.westga.cs.schoolgrades.model.Grade;
+
 /**
  * Creates the model objects for the GUI
  * 
@@ -28,6 +30,21 @@ public class GuiController {
 		this.tableQuizModel = new GradeTableModel();
 		this.tableHomeworkModel = new GradeTableModel();
 		this.tableExamModel = new GradeTableModel();
+		
+		this.tableQuizModel.addTableModelListener(e -> {
+			/**
+			 * 		int row = e.getFirstRow();
+					int type = e.getType();
+					GradeTableModel model = (GradeTableModel) e.getSource();
+					Grade data = (Grade) model.getValueAt(row, 1);
+			 */
+		});
+		this.tableHomeworkModel.addTableModelListener(e -> {
+			
+		});
+		this.tableExamModel.addTableModelListener(e -> {
+			
+		});
 		
 		this.spinnerQuizWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
 		this.spinnerHomeworkWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
