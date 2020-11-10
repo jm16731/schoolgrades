@@ -75,7 +75,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(this.lblExams);
 		
 		scrollPaneQuiz = new JScrollPane();
-		scrollPaneQuiz.setBounds(299, 319, -109, -243);
+		scrollPaneQuiz.setBounds(203, 87, 100, 243);
 		getContentPane().add(scrollPaneQuiz);
 		
 		this.tableQuiz = new JTable();
@@ -83,7 +83,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 		this.tableQuiz.setToolTipText("Table of all student's quizzes");
 		
 		scrollPaneHomework = new JScrollPane();
-		scrollPaneHomework.setBounds(513, 318, -149, -230);
+		scrollPaneHomework.setBounds(363, 87, 149, 230);
 		getContentPane().add(scrollPaneHomework);
 		
 		this.tableHomework = new JTable();
@@ -91,7 +91,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 		this.tableHomework.setToolTipText("Table of all of student's homework");
 		
 		scrollPaneExam = new JScrollPane();
-		scrollPaneExam.setBounds(663, 319, -98, -231);
+		scrollPaneExam.setBounds(564, 87, 98, 231);
 		getContentPane().add(scrollPaneExam);
 		
 		this.tableExam = new JTable();
