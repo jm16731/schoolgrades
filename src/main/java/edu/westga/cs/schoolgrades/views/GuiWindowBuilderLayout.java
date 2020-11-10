@@ -84,8 +84,6 @@ public class GuiWindowBuilderLayout extends JFrame {
 		
 		this.tableQuiz = new JTable();
 		scrollPaneQuiz.setViewportView(this.tableQuiz);
-		this.tableQuiz.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.tableQuiz.setFillsViewportHeight(true);
 		this.tableQuiz.setToolTipText("Table of all student's quizzes");
 		
 		scrollPaneHomework = new JScrollPane();
@@ -94,8 +92,6 @@ public class GuiWindowBuilderLayout extends JFrame {
 		
 		this.tableHomework = new JTable();
 		scrollPaneHomework.setViewportView(this.tableHomework);
-		this.tableHomework.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.tableHomework.setFillsViewportHeight(true);
 		this.tableHomework.setToolTipText("Table of all of student's homework");
 		
 		scrollPaneExam = new JScrollPane();
@@ -104,8 +100,6 @@ public class GuiWindowBuilderLayout extends JFrame {
 		
 		this.tableExam = new JTable();
 		scrollPaneExam.setViewportView(this.tableExam);
-		this.tableExam.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.tableExam.setFillsViewportHeight(true);
 		this.tableExam.setToolTipText("Table of all of student's exams");
 		
 		spinnerQuizWeight = new JSpinner();
