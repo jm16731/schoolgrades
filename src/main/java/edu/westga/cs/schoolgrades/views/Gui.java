@@ -38,7 +38,16 @@ public class Gui extends GuiWindowBuilderLayout {
 		this.btnAddExam.addActionListener(e -> {
 			Gui.this.controller.addExam();
 		});
-		this.chckbxDropLowestHomeworkGrade.addActionListener(e -> {
+		this.spinnerQuizWeight.addChangeListener(e -> {
+			Gui.this.controller.setQuizWeight();
+		});
+		this.spinnerHomeworkWeight.addChangeListener(e -> {
+			Gui.this.controller.setHomeworkWeight();
+		});
+		this.spinnerExamWeight.addChangeListener(e -> {
+			Gui.this.controller.setExamWeight();
+		});
+		this.chckbxDropLowestHomeworkGrade.addItemListener(e -> {
 			Gui.this.controller.shouldDropLowestHomeworkGrade(this.chckbxDropLowestHomeworkGrade.isSelected());
 		});
 	}

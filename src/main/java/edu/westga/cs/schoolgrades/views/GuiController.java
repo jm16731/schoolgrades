@@ -104,10 +104,12 @@ public class GuiController {
 		return this.quizSubtotalModel;
 	}
 	
+	public void setQuizWeight() {
+		this.tableQuizModel.setWeight(this.spinnerQuizWeightModel.getNumber().doubleValue());
+	}
+	
 	public void updateQuizSubtotal() {
-		WeightedGrade grade = new WeightedGrade(
-				this.tableQuizModel.getGrade(), this.spinnerQuizWeightModel.getNumber().doubleValue());
-			double subtotal = grade.getValue();
+		double subtotal = this.tableQuizModel.getTotalGrade();
 		try {
 			this.quizSubtotalModel.remove(0, this.quizSubtotalModel.getLength());
 			this.quizSubtotalModel.insertString(0, String.valueOf(subtotal), null);
@@ -132,10 +134,12 @@ public class GuiController {
 		this.updateHomeworkSubtotal();
 	}
 	
+	public void setHomeworkWeight() {
+		this.tableHomeworkModel.setWeight(this.spinnerHomeworkWeightModel.getNumber().doubleValue());
+	}
+	
 	public void updateHomeworkSubtotal() {
-		WeightedGrade grade = new WeightedGrade(
-				this.tableHomeworkModel.getGrade(), this.spinnerHomeworkWeightModel.getNumber().doubleValue());
-			double subtotal = grade.getValue();
+		double subtotal = this.tableHomeworkModel.getTotalGrade();
 		try {
 			this.homeworkSubtotalModel.remove(0, this.homeworkSubtotalModel.getLength());
 			this.homeworkSubtotalModel.insertString(0, String.valueOf(subtotal), null);
@@ -149,10 +153,12 @@ public class GuiController {
 		return this.examSubtotalModel;
 	}
 	
+	public void setExamWeight() {
+		this.tableExamModel.setWeight(this.spinnerExamWeightModel.getNumber().doubleValue());
+	}
+	
 	public void updateExamSubtotal() {
-		WeightedGrade grade = new WeightedGrade(
-			this.tableExamModel.getGrade(), this.spinnerExamWeightModel.getNumber().doubleValue());
-		double subtotal = grade.getValue();
+		double subtotal = this.tableExamModel.getTotalGrade();
 		try {
 			this.examSubtotalModel.remove(0, this.examSubtotalModel.getLength());
 			this.examSubtotalModel.insertString(0, String.valueOf(subtotal), null);
