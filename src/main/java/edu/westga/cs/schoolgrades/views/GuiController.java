@@ -14,7 +14,7 @@ import edu.westga.cs.schoolgrades.model.WeightedGrade;
  * Creates the model objects for the GUI
  * 
  * @author Greg Murrell
- * @version 11/03/2020
+ * @version 11/10/2020
  */
 public class GuiController {
 	private GradeTableModel tableQuizModel;
