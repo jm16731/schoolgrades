@@ -25,12 +25,7 @@ public class Gui extends GuiWindowBuilderLayout {
 		this.textFieldExamSubtotal.setDocument(this.controller.getExamSubtotalModel());
 		this.textFieldFinalGrade.setDocument(this.controller.getFinalGradeModel());
 
-		this.setMouseListeners();
 		this.setActionListeners();
-	}
-	
-	private void setMouseListeners() {
-		
 	}
 	
 	private void setActionListeners() {
@@ -43,5 +38,6 @@ public class Gui extends GuiWindowBuilderLayout {
 		this.btnAddExam.addActionListener(e -> {
 			Gui.this.controller.addExam();
 		});
+		//this.chckbxDropLowestGrade;
 	}
 }
