@@ -1,7 +1,5 @@
 package edu.westga.cs.schoolgrades.views;
 
-import javax.swing.JCheckBox;
-
 /**
  * User configuration of the GUI
  * 
@@ -41,8 +39,7 @@ public class Gui extends GuiWindowBuilderLayout {
 			Gui.this.controller.addExam();
 		});
 		this.chckbxDropLowestHomeworkGrade.addActionListener(e -> {
-			JCheckBox source = (JCheckBox) e.getSource();
-			Gui.this.controller.shouldDropLowestHomeworkGrade(source.isSelected());
+			Gui.this.controller.shouldDropLowestHomeworkGrade(this.chckbxDropLowestHomeworkGrade.isSelected());
 		});
 	}
 }
