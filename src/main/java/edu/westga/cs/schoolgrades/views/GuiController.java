@@ -111,7 +111,7 @@ public class GuiController {
 		double subtotal = this.tableQuizModel.getTotalGrade();
 		try {
 			this.quizSubtotalModel.remove(0, this.quizSubtotalModel.getLength());
-			this.quizSubtotalModel.insertString(0, String.valueOf(subtotal), null);
+			this.quizSubtotalModel.insertString(0, String.valueOf(subtotal).format("%.2f"), null);
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}
@@ -141,7 +141,7 @@ public class GuiController {
 		double subtotal = this.tableHomeworkModel.getTotalGrade();
 		try {
 			this.homeworkSubtotalModel.remove(0, this.homeworkSubtotalModel.getLength());
-			this.homeworkSubtotalModel.insertString(0, String.valueOf(subtotal), null);
+			this.homeworkSubtotalModel.insertString(0, String.valueOf(subtotal).format("%.2f"), null);
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}
@@ -160,7 +160,7 @@ public class GuiController {
 		double subtotal = this.tableExamModel.getTotalGrade();
 		try {
 			this.examSubtotalModel.remove(0, this.examSubtotalModel.getLength());
-			this.examSubtotalModel.insertString(0, String.valueOf(subtotal), null);
+			this.examSubtotalModel.insertString(0, String.valueOf(subtotal).format("%.2f"), null);
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}
