@@ -3,6 +3,7 @@ package edu.westga.cs.schoolgrades.views;
 import javax.swing.table.AbstractTableModel;
 
 import edu.westga.cs.schoolgrades.model.GradingStrategy;
+
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
 import edu.westga.cs.schoolgrades.model.WeightedGrade;
 import edu.westga.cs.schoolgrades.model.CompositeGrade;
