@@ -178,7 +178,7 @@ public class GuiController {
 		double subtotal = this.tableFinalGradeModel.getTotalGrade();
 		try {
 			this.finalGradeModel.remove(0, this.finalGradeModel.getLength());
-			this.finalGradeModel.insertString(0, String.valueOf(subtotal), null);
+			this.finalGradeModel.insertString(0, String.format("%.2f", subtotal), null);
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}	
