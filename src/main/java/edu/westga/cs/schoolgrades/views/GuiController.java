@@ -105,6 +105,7 @@ public class GuiController {
 	
 	public void setQuizWeight() {
 		this.tableQuizModel.setWeight(this.spinnerQuizWeightModel.getNumber().doubleValue());
+		this.updateQuizSubtotal();
 	}
 	
 	public void updateQuizSubtotal() {
@@ -135,6 +136,7 @@ public class GuiController {
 	
 	public void setHomeworkWeight() {
 		this.tableHomeworkModel.setWeight(this.spinnerHomeworkWeightModel.getNumber().doubleValue());
+		this.updateHomeworkSubtotal();
 	}
 	
 	public void updateHomeworkSubtotal() {
@@ -154,6 +156,7 @@ public class GuiController {
 	
 	public void setExamWeight() {
 		this.tableExamModel.setWeight(this.spinnerExamWeightModel.getNumber().doubleValue());
+		this.updateExamSubtotal();
 	}
 	
 	public void updateExamSubtotal() {
