@@ -5,6 +5,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
+import edu.westga.cs.schoolgrades.model.DropLowestGradeGradingStrategy;
 import edu.westga.cs.schoolgrades.model.AverageOfGradesGradingStrategy;
 import edu.westga.cs.schoolgrades.model.SumOfGradesGradingStrategy;
 
@@ -117,6 +118,17 @@ public class GuiController {
 	
 	public Document getHomeworkSubtotalModel() {
 		return this.homeworkSubtotalModel;
+	}
+	
+	public void shouldDropLowestHomeworkGrade(boolean drop) {
+		if (drop) {
+			this.tableHomeworkModel.setGradingStrategy(
+				new DropLowestGradeGradingStrategy(new AverageOfGradesGradingStrategy()));
+		} else {
+			this.tableHomeworkModel.setGradingStrategy(
+				new AverageOfGradesGradingStrategy());
+		}
+		this.updateHomeworkSubtotal();
 	}
 	
 	public void updateHomeworkSubtotal() {

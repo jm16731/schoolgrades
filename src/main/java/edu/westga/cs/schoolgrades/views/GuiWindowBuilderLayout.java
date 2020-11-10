@@ -36,7 +36,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 	protected JLabel lblWeight;
 	protected JLabel lblSubtotal;
 	protected JLabel lblFinalGrade;
-	protected JCheckBox chckbxDropLowestGrade;
+	protected JCheckBox chckbxDropLowestHomeworkGrade;
 	protected JButton btnAddQuiz;
 	protected JScrollPane scrollPaneQuiz;
 	protected JScrollPane scrollPaneHomework;
@@ -127,11 +127,11 @@ public class GuiWindowBuilderLayout extends JFrame {
 		lblSubtotal.setBounds(84, 400, 66, 14);
 		getContentPane().add(lblSubtotal);
 		
-		chckbxDropLowestGrade = new JCheckBox("Drop Lowest Homework?");
-		this.chckbxDropLowestGrade.setToolTipText("Should you drop the lowest homework grade?");
-		chckbxDropLowestGrade.setFont(new Font("Tahoma", Font.BOLD, 12));
-		chckbxDropLowestGrade.setBounds(353, 440, 179, 23);
-		getContentPane().add(chckbxDropLowestGrade);
+		chckbxDropLowestHomeworkGrade = new JCheckBox("Drop Lowest Homework?");
+		this.chckbxDropLowestHomeworkGrade.setToolTipText("Should you drop the lowest homework grade?");
+		chckbxDropLowestHomeworkGrade.setFont(new Font("Tahoma", Font.BOLD, 12));
+		chckbxDropLowestHomeworkGrade.setBounds(353, 440, 179, 23);
+		getContentPane().add(chckbxDropLowestHomeworkGrade);
 		
 		lblFinalGrade = new JLabel("Final Grade");
 		lblFinalGrade.setFont(new Font("Tahoma", Font.BOLD, 14));
