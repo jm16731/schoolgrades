@@ -57,6 +57,11 @@ public class GradeTableModel extends AbstractTableModel {
 		this.fireTableDataChanged();
 	}
 	
+	@Override
+	public boolean isCellEditable(int row, int column) {
+		return true;
+	}
+	
 	public void setValueAt(double value, int row, int column) {
 		this.setValueAt(new SimpleGrade(value), row, column);
 	}
