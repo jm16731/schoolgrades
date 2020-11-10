@@ -8,7 +8,6 @@ import javax.swing.text.PlainDocument;
 import edu.westga.cs.schoolgrades.model.DropLowestGradeGradingStrategy;
 import edu.westga.cs.schoolgrades.model.AverageOfGradesGradingStrategy;
 import edu.westga.cs.schoolgrades.model.SumOfGradesGradingStrategy;
-import edu.westga.cs.schoolgrades.model.WeightedGrade;
 
 /**
  * Creates the model objects for the GUI
