@@ -62,6 +62,11 @@ public class GradeTableModel extends AbstractTableModel {
 		return true;
 	}
 	
+	@Override
+	public Class<SimpleGrade> getColumnClass(int columnIndex) {
+		return SimpleGrade.class;
+	}
+	
 	public void setValueAt(double value, int row, int column) {
 		this.setValueAt(new SimpleGrade(value), row, column);
 	}
