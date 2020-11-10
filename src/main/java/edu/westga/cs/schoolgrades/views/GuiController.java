@@ -104,6 +104,8 @@ public class GuiController {
 	
 	public void updateQuizSubtotal() {
 		double subtotal = this.tableQuizModel.getTotalGrade();
+		double weight = this.spinnerQuizWeightModel.getNumber().doubleValue();
+		subtotal *= weight;
 		try {
 			this.quizSubtotalModel.remove(0, this.quizSubtotalModel.getLength());
 			this.quizSubtotalModel.insertString(0, String.valueOf(subtotal), null);
@@ -119,6 +121,8 @@ public class GuiController {
 	
 	public void updateHomeworkSubtotal() {
 		double subtotal = this.tableHomeworkModel.getTotalGrade();
+		double weight = this.spinnerHomeworkWeightModel.getNumber().doubleValue();
+		subtotal *= weight;
 		try {
 			this.homeworkSubtotalModel.remove(0, this.homeworkSubtotalModel.getLength());
 			this.homeworkSubtotalModel.insertString(0, String.valueOf(subtotal), null);
@@ -134,6 +138,8 @@ public class GuiController {
 	
 	public void updateExamSubtotal() {
 		double subtotal = this.tableExamModel.getTotalGrade();
+		double weight = this.spinnerExamWeightModel.getNumber().doubleValue();
+		subtotal *= weight;
 		try {
 			this.examSubtotalModel.remove(0, this.examSubtotalModel.getLength());
 			this.examSubtotalModel.insertString(0, String.valueOf(subtotal), null);
