@@ -4,6 +4,7 @@ import javax.swing.table.AbstractTableModel;
 
 import edu.westga.cs.schoolgrades.model.GradingStrategy;
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
+import edu.westga.cs.schoolgrades.model.WeightedGrade;
 import edu.westga.cs.schoolgrades.model.CompositeGrade;
 import edu.westga.cs.schoolgrades.model.Grade;
 
@@ -14,15 +15,21 @@ import edu.westga.cs.schoolgrades.model.Grade;
  * @version 11/10/2020
  */
 public class GradeTableModel extends AbstractTableModel {
-	private CompositeGrade grade;
+	private CompositeGrade gradesToWeigh;
+	private WeightedGrade grade;
 	
 	public GradeTableModel(GradingStrategy strategy) {
-		this.grade = new CompositeGrade(strategy);
+		this(strategy, 0);
+	}
+	
+	public GradeTableModel(GradingStrategy strategy, double weight) {
+		this.gradesToWeigh = new CompositeGrade(strategy);
+		this.grade = new WeightedGrade(this.gradesToWeigh, weight);
 	}
 	
 	@Override
 	public int getRowCount() {
-		return this.grade.getListOfGrades().size();
+		return this.gradesToWeigh.getListOfGrades().size();
 	}
 
 	@Override
@@ -35,14 +42,14 @@ public class GradeTableModel extends AbstractTableModel {
 		if (rowIndex < 0) {
 			throw new IndexOutOfBoundsException("TableModel cannot return a getValueAt for rowIndex less than zero");
 		}
-		return this.grade.getListOfGrades().get(rowIndex);
+		return this.gradesToWeigh.getListOfGrades().get(rowIndex);
 	}
 	
 	@Override
 	public void setValueAt(Object value, int row, int column) {
-		this.grade.addGrade((SimpleGrade) value, row);
+		this.gradesToWeigh.addGrade((SimpleGrade) value, row);
 		try {
-			this.grade.removeGrade(row + 1);
+			this.gradesToWeigh.removeGrade(row + 1);
 		} catch (IndexOutOfBoundsException ex) {
 			
 		}
@@ -58,19 +65,19 @@ public class GradeTableModel extends AbstractTableModel {
 	}
 	
 	public GradingStrategy getGradingStrategy() {
-		return this.grade.getGradingStrategy();
+		return this.gradesToWeigh.getGradingStrategy();
 	}
 	
 	public void setGradingStrategy(GradingStrategy strategy) {
-		this.grade.setGradingStrategy(strategy);
+		this.gradesToWeigh.setGradingStrategy(strategy);
+	}
+	
+	public void setWeight(double weight) {
+		this.grade.setWeight(weight);
 	}
 	
 	public double getTotalGrade() {
 		return this.grade.getValue();
-	}
-	
-	public CompositeGrade getGrade() {
-		return this.grade;
 	}
 
 }
