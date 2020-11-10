@@ -7,6 +7,7 @@ import javax.swing.text.PlainDocument;
 
 import edu.westga.cs.schoolgrades.model.DropLowestGradeGradingStrategy;
 import edu.westga.cs.schoolgrades.model.AverageOfGradesGradingStrategy;
+import edu.westga.cs.schoolgrades.model.CompositeGrade;
 import edu.westga.cs.schoolgrades.model.SumOfGradesGradingStrategy;
 
 /**
@@ -19,7 +20,8 @@ public class GuiController {
 	private GradeTableModel tableQuizModel;
 	private GradeTableModel tableHomeworkModel;
 	private GradeTableModel tableExamModel;
-	private GradeTableModel tableFinalGradeModel;
+	
+	private CompositeGrade finalGrade;
 	
 	private SpinnerNumberModel spinnerQuizWeightModel;
 	private SpinnerNumberModel spinnerHomeworkWeightModel;
@@ -34,11 +36,6 @@ public class GuiController {
 		this.tableQuizModel = new GradeTableModel(new AverageOfGradesGradingStrategy());
 		this.tableHomeworkModel = new GradeTableModel(new AverageOfGradesGradingStrategy());
 		this.tableExamModel = new GradeTableModel(new AverageOfGradesGradingStrategy());
-		this.tableFinalGradeModel = new GradeTableModel(new SumOfGradesGradingStrategy());
-		
-		this.tableFinalGradeModel.addRow();
-		this.tableFinalGradeModel.addRow();
-		this.tableFinalGradeModel.addRow();
 		
 		this.tableQuizModel.addTableModelListener(e -> {
 			this.updateQuizSubtotal();
@@ -49,9 +46,11 @@ public class GuiController {
 		this.tableExamModel.addTableModelListener(e -> {
 			this.updateExamSubtotal();
 		});
-		this.tableFinalGradeModel.addTableModelListener(e -> {
-			this.updateFinalGrade();
-		});
+		
+		this.finalGrade = new CompositeGrade(new SumOfGradesGradingStrategy());
+		this.finalGrade.addGrade(this.tableQuizModel.getTotalGrade());
+		this.finalGrade.addGrade(this.tableHomeworkModel.getTotalGrade());
+		this.finalGrade.addGrade(this.tableExamModel.getTotalGrade());
 		
 		this.spinnerQuizWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
 		this.spinnerHomeworkWeightModel = new SpinnerNumberModel(0.00, 0, 1, 0.01);
@@ -116,7 +115,9 @@ public class GuiController {
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}
-		this.tableFinalGradeModel.setValueAt(subtotal, 0, 1);
+		this.finalGrade.removeGrade(0);
+		this.finalGrade.addGrade(subtotal, 0);
+		this.updateFinalGrade();
 	}
 	
 	public Document getHomeworkSubtotalModel() {
@@ -147,7 +148,9 @@ public class GuiController {
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}
-		this.tableFinalGradeModel.setValueAt(subtotal, 1, 1);
+		this.finalGrade.removeGrade(1);
+		this.finalGrade.addGrade(subtotal, 1);
+		this.updateFinalGrade();
 	}
 	
 	public Document getExamSubtotalModel() {
@@ -167,7 +170,9 @@ public class GuiController {
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}
-		this.tableFinalGradeModel.setValueAt(subtotal, 2, 1);
+		this.finalGrade.removeGrade(2);
+		this.finalGrade.addGrade(subtotal, 2);
+		this.updateFinalGrade();
 	}
 	
 	public Document getFinalGradeModel() {
@@ -175,10 +180,10 @@ public class GuiController {
 	}
 	
 	public void updateFinalGrade() {
-		double subtotal = this.tableFinalGradeModel.getTotalGrade();
+		double grade = this.finalGrade.getValue();
 		try {
 			this.finalGradeModel.remove(0, this.finalGradeModel.getLength());
-			this.finalGradeModel.insertString(0, String.format("%.2f", subtotal), null);
+			this.finalGradeModel.insertString(0, String.format("%.2f", grade), null);
 		} catch (BadLocationException ex) {
 			ex.printStackTrace();
 		}	
