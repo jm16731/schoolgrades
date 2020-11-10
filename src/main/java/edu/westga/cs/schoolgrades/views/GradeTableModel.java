@@ -68,5 +68,9 @@ public class GradeTableModel extends AbstractTableModel {
 	public double getTotalGrade() {
 		return this.grade.getValue();
 	}
+	
+	public CompositeGrade getGrade() {
+		return this.grade;
+	}
 
 }
