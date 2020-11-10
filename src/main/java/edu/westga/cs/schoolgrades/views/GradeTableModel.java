@@ -63,6 +63,11 @@ public class GradeTableModel extends AbstractTableModel {
 	}
 	
 	@Override
+	public String getColumnName(int col) {
+		return "Grades";
+	}
+	
+	@Override
 	public Class<SimpleGrade> getColumnClass(int columnIndex) {
 		return SimpleGrade.class;
 	}
