@@ -80,5 +80,10 @@ public class GradeTableModel extends AbstractTableModel {
 	public double getTotalGrade() {
 		return this.grade.getValue();
 	}
+	
+	@Override
+	public String toString() {
+		return String.valueOf(this.getTotalGrade());
+	}
 
 }
