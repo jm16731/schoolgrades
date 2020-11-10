@@ -39,16 +39,16 @@ public class GradeTableModel extends AbstractTableModel {
 	}
 
 	@Override
-	public Grade getValueAt(int rowIndex, int columnIndex) {
+	public Double getValueAt(int rowIndex, int columnIndex) {
 		if (rowIndex < 0) {
 			throw new IndexOutOfBoundsException("TableModel cannot return a getValueAt for rowIndex less than zero");
 		}
-		return this.gradesToWeigh.getListOfGrades().get(rowIndex);
+		return this.gradesToWeigh.getListOfGrades().get(rowIndex).getValue();
 	}
 	
 	@Override
 	public void setValueAt(Object value, int row, int column) {
-		this.gradesToWeigh.addGrade((SimpleGrade) value, row);
+		this.gradesToWeigh.addGrade(new SimpleGrade((Double) value), row);
 		try {
 			this.gradesToWeigh.removeGrade(row + 1);
 		} catch (IndexOutOfBoundsException ex) {
@@ -68,16 +68,12 @@ public class GradeTableModel extends AbstractTableModel {
 	}
 	
 	@Override
-	public Class<SimpleGrade> getColumnClass(int columnIndex) {
-		return SimpleGrade.class;
-	}
-	
-	public void setValueAt(double value, int row, int column) {
-		this.setValueAt(new SimpleGrade(value), row, column);
+	public Class<Double> getColumnClass(int columnIndex) {
+		return Double.class;
 	}
 	
 	public void addRow() {
-		this.setValueAt(0, this.getRowCount(), 1);
+		this.setValueAt(0.00, this.getRowCount(), 1);
 	}
 	
 	public GradingStrategy getGradingStrategy() {
@@ -94,11 +90,6 @@ public class GradeTableModel extends AbstractTableModel {
 	
 	public double getTotalGrade() {
 		return this.grade.getValue();
-	}
-	
-	@Override
-	public String toString() {
-		return String.valueOf(this.getTotalGrade());
 	}
 
 }
