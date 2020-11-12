@@ -1,7 +1,5 @@
 package edu.westga.cs.schoolgrades.model;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,12 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.mockito.Mockito.*;
+
 public class TestDropLowestStrategyCalculate {
 
 	private DropLowestStrategy dropLowestStrategy;
 	private GradeCalculationStrategy childStrategy;
 	
-	private static final double DELTA = 0.001;
 	private Grade grade0;
 	private Grade grade1;
 	private Grade grade2;
@@ -23,13 +22,17 @@ public class TestDropLowestStrategyCalculate {
 	
 	@BeforeEach
 	public void setUp() throws Exception {
-		grade0 = new SimpleGrade(10);
-		grade1 = new SimpleGrade(20);
-		grade2 = new SimpleGrade(30);
+		grade0 = mock(Grade.class);
+		when(grade0.getValue()).thenReturn(10.0);
+		grade1 = mock(Grade.class);
+		when(grade1.getValue()).thenReturn(20.0);
+		grade2 = mock(Grade.class);
+		when(grade2.getValue()).thenReturn(30.0);
 		
 		grades = new ArrayList<Grade>();
 		
-		childStrategy = new SumOfGradesStrategy();
+		childStrategy = mock(GradeCalculationStrategy.class);
+		when(childStrategy.calculate(grades)).thenReturn(0.00);
 		dropLowestStrategy = new DropLowestStrategy(childStrategy);
 	}
 
@@ -42,12 +45,15 @@ public class TestDropLowestStrategyCalculate {
 
 	@Test
 	public void shouldNotDropLowestIfGradesListIsEmpty() {
-		assertEquals(0, dropLowestStrategy.calculate(grades), DELTA);
+		dropLowestStrategy.calculate(grades);
+		verify(childStrategy).calculate(grades);
 	}
 	
+	@Test
 	public void shouldNotDropLowestIfGradesListHasOneElement() {
 		grades.add(grade0);
-		assertEquals(grade0.getValue(), dropLowestStrategy.calculate(grades), DELTA);
+		dropLowestStrategy.calculate(grades);
+		verify(childStrategy).calculate(grades);
 	}
 	
 	@Test
@@ -55,7 +61,12 @@ public class TestDropLowestStrategyCalculate {
 		grades.add(grade0);
 		grades.add(grade1);
 		grades.add(grade2);
-		assertEquals(50, dropLowestStrategy.calculate(grades), DELTA);
+		dropLowestStrategy.calculate(grades);
+		
+		ArrayList<Grade> gradesMinusOne = new ArrayList<Grade>();
+		gradesMinusOne.add(grade1);
+		gradesMinusOne.add(grade2);
+		verify(childStrategy).calculate(gradesMinusOne);
 	}
 	
 	
@@ -64,7 +75,12 @@ public class TestDropLowestStrategyCalculate {
 		grades.add(grade1);
 		grades.add(grade2);
 		grades.add(grade0);
-		assertEquals(50, dropLowestStrategy.calculate(grades), DELTA);
+		dropLowestStrategy.calculate(grades);
+		
+		ArrayList<Grade> gradesMinusOne = new ArrayList<Grade>();
+		gradesMinusOne.add(grade1);
+		gradesMinusOne.add(grade2);
+		verify(childStrategy).calculate(gradesMinusOne);
 	}
 	
 	@Test
@@ -72,7 +88,12 @@ public class TestDropLowestStrategyCalculate {
 		grades.add(grade1);
 		grades.add(grade0);
 		grades.add(grade2);
-		assertEquals(50, dropLowestStrategy.calculate(grades), DELTA);
+		dropLowestStrategy.calculate(grades);
+		
+		ArrayList<Grade> gradesMinusOne = new ArrayList<Grade>();
+		gradesMinusOne.add(grade1);
+		gradesMinusOne.add(grade2);
+		verify(childStrategy).calculate(gradesMinusOne);
 	}
 	
 	@Test
@@ -81,6 +102,12 @@ public class TestDropLowestStrategyCalculate {
 		grades.add(grade0);
 		grades.add(grade2);
 		grades.add(grade0);
-		assertEquals(60, dropLowestStrategy.calculate(grades), DELTA);
+		dropLowestStrategy.calculate(grades);
+		
+		ArrayList<Grade> gradesMinusOne = new ArrayList<Grade>();
+		gradesMinusOne.add(grade1);
+		gradesMinusOne.add(grade2);
+		gradesMinusOne.add(grade0);
+		verify(childStrategy).calculate(gradesMinusOne);
 	}
 }
