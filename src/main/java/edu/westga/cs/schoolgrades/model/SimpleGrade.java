@@ -1,47 +1,40 @@
 package edu.westga.cs.schoolgrades.model;
 
 /**
- * 	This class simply wraps a double value as a student's grade, while providing
- * an implementation of the Grade interface.
+ * A {@link Grade} with a constant value.
  * 
- * @author Greg Murrell
- * @version 10/09/2020
+ * @author lewisb
+ *
  */
 public class SimpleGrade implements Grade {
-
 	private double value;
-	
+
 	/**
-	 * Constructs a SimpleGrade with the given value for the grade
+	 * Creates a SimpleGrade with the given value.
 	 * 
-	 * @param value		Value of the grade
+	 * @param value the assigned numerical grade. Must be >= 0
 	 */
 	public SimpleGrade(double value) {
-		this.setValue(value);
+		setValue(value);
 	}
 	
-	/**
-	 * See: {@link Grade#getValue()}
-	 */
 	@Override
 	public double getValue() {
-		return this.value;
+		return value;
 	}
 	
 	/**
-	 * Sets the value of the student's grade to the specified value.
+	 * Sets the value.
 	 * 
-	 * @param value		New value of the student's grade
-	 * 
-	 * @precondition	value => 0
-	 * 
-	 * @throws IllegalArgumentException		If value's range is invalid
+	 * @param value
 	 */
 	public void setValue(double value) {
 		if (value < 0) {
-			throw new IllegalArgumentException("Value for grade cannot be negative");
+			throw new IllegalArgumentException("value should not be < 0");
 		}
+		
 		this.value = value;
 	}
-
+	
+	
 }

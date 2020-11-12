@@ -1,152 +1,100 @@
 package edu.westga.cs.schoolgrades.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
- * 	This class models a Grade that is actually composed of (iow, calculated from)
- * many other Grades.
+ * A {@link Grade} representing the aggregation of several other grades. Uses a {@link GradeCalculationStrategy} to determine
+ * the calculation for the aggregate score.
  * 
- * @author Greg Murrell
- * @version 10/13/2020
+ * @author lewisb
+ *
  */
 public class CompositeGrade implements Grade {
-	private final ArrayList<Grade> grades;
-	private GradingStrategy strategy;
+
+	private GradeCalculationStrategy strategy;
+	private final List<Grade> childGrades;
 	
 	/**
-	 * 	Initializes instance variables, sets a default GradingStrategy
-	 * as SumOfGradesGradingStrategy
+	 * Creates a new CompositeGrade using the given strategy.
+	 * 
+	 * @param strategy the strategy to use for grade calculation. Must not be null.
 	 */
-	public CompositeGrade() {
-		this(new SumOfGradesGradingStrategy());
+	public CompositeGrade(GradeCalculationStrategy strategy) {
+		setGradingStrategy(strategy);
+		this.childGrades = new ArrayList<Grade>();
 	}
 	
 	/**
-	 * Construct a Composite grade according to the given GradingStrategy
+	 * Adds a {@link Grade} to the end of this CompositeGrade.
 	 * 
-	 * @param strategy				The GradingStrategy for grading
-	 * 
-	 * @precondition				strategy is not null
-	 * 
-	 * @throws NullPointerException	If strategy is null
+	 * @param grade the grade to add. Must not be null and must not already exist in this CompositeGrade
 	 */
-	public CompositeGrade(GradingStrategy strategy) {
-		this.grades = new ArrayList<Grade>();
-		this.setGradingStrategy(strategy);
+	public void add(final Grade grade) {
+		validateGradeNotNull(grade);
+		childGrades.add(grade);
 	}
 	
 	/**
-	 * Sets the GradingStrategy to the given strategy
-	 * 
-	 * @param strategy				The new GradingStrategy
-	 * 
-	 * @precondition				strategy is not null
-	 * 
-	 * @throws NullPointerException	If strategy is null
+	 * Adds a {@link Grade} to this CompositeGrade at the given index.
+	 * @param grade the grade to add
+	 * @param index the index at which to add it
 	 */
-	public void setGradingStrategy(GradingStrategy strategy) {
-		if (strategy == null) {
-			throw new NullPointerException("CompositeGrade's GradingStrategy cannot be null");
-		}
-		this.strategy = strategy;
+	public void add(final Grade grade, int index) {
+		validateGradeNotNull(grade);
+		childGrades.add(index, grade);
 	}
 	
 	/**
-	 * Gets this CompositeGrade's GradingStrategy
-	 * 
-	 * @return		This instance's GradingStrategy
+	 * Removes the {@link Grade}  at the given index.
+	 * @param grade the grade to remove
+	 * @param index the index at which to remove it
 	 */
-	public GradingStrategy getGradingStrategy() {
-		return this.strategy;
+	public void removeAt(int index) {
+		childGrades.remove(index);
 	}
-	
-	/**
-	 * Gets the list of grades maintained by this CompositeGrade
-	 * 
-	 * @return		This CompositeGrade's list of grades
-	 */
-	public ArrayList<Grade> getListOfGrades() {
-		return this.grades;
-	}
-	
-	/**
-	 * Adds the given grade as a SimpleGrade into the CompositeGrade
-	 * 
-	 * @param grade		The grade to be absorbed into the collective
-	 */
-	public void addGrade(double grade) {
-		this.addGrade(new SimpleGrade(grade));
-	}
-	
-	/**
-	 * Adds the given grade into the CompositeGrade at the given index
-	 * 
-	 * @param grade		The grade to be absorbed into the collective
-	 * @param index		grade is not null
-	 * 
-	 * @throws IndexOutOfBoundsException	If index < 0 or if index > grades.size()
-	 */
-	public void addGrade(double grade, int index) throws IndexOutOfBoundsException {
-		this.addGrade(new SimpleGrade(grade), index);
-	}
-	
-	/**
-	 * Adds the given array of grades as SimpleGrades into the CompositeGrade
-	 * 
-	 * @param grades	The grades to be absorbed into the collective
-	 */
-	public void addGrade(double[] grades) {
-		for (double grade : grades) {
-			this.addGrade(new SimpleGrade(grade));
-		}
-	}
-	
-	/**
-	 * Adds the given Grade into the CompositeGrade
-	 * 
-	 * @param grade		The grade to be absorbed into the collective
-	 * 
-	 * @precondition	grade is not null
-	 * 
-	 * @throws NullPointerException	If grade is null
-	 */
-	public void addGrade(Grade grade) {
-		this.addGrade(grade, this.grades.size());
-	}
-	
-	/**
-	 * Adds the given grade into the CompositeGrade at the given index
-	 * 
-	 * @param grade		The grade to be absorbed into the collective
-	 * @param index		grade is not null
-	 * 
-	 * @throws NullPointerException			If grade is null
-	 * @throws IndexOutOfBoundsException	If index < 0 or if index > grades.size()
-	 */
-	public void addGrade(Grade grade, int index) throws NullPointerException, IndexOutOfBoundsException {
+
+	private void validateGradeNotNull(final Grade grade) {
 		if (grade == null) {
-			throw new NullPointerException("Cannot add a null grade to CompositeGrade");
+			throw new IllegalArgumentException("grade can not be null");
 		}
-		this.grades.add(index, grade);
 	}
 	
 	/**
-	 * Removes the Grade from the CompositeGrade at the given index
+	 * Gets the {@link Grade}s contained in this CompositeGrade
 	 * 
-	 * @param index		The index of the grade to free from the collective
-	 * 
-	 * @throws IndexOutOfBoundsException	If index < 0 or if index > grades.size()
+	 * @return all contained grades
 	 */
-	public void removeGrade(int index) throws IndexOutOfBoundsException {
-		this.grades.remove(index);
+	public List<Grade> getGrades() {
+		return Collections.unmodifiableList(childGrades);
 	}
 	
-	/**
-	 * See: {@link Grade#getValue()}
-	 */
 	@Override
 	public double getValue() {
-		return this.strategy.calculateGrade(this);
+		return strategy.calculate(childGrades);
+	}
+
+	/**
+	 * Convenience method to add all grades in the list.
+	 * 
+	 * @param grades the list of grades to add. Will not allow duplicates or nulls inside the list.
+	 */
+	public void addAll(List<? extends Grade> grades) {
+		if (grades == null) {
+			throw new IllegalArgumentException("grades can not be null");
+		}
+		
+		for (Grade grade: grades) {
+			this.add(grade);
+		}
+	}
+
+	public void setGradingStrategy(GradeCalculationStrategy strategy) {
+		if (strategy == null) {
+			throw new IllegalArgumentException("strategy should not be null");
+		}
+		this.strategy = strategy;
 	}
 
 }

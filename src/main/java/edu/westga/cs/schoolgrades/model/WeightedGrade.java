@@ -1,67 +1,38 @@
 package edu.westga.cs.schoolgrades.model;
 
 /**
- * 	This class models a Grade after a Weight has been applied to it.
+ * Decorator for {@link Grade} objects that applies a multiplicative weight.
  * 
- * @author Greg Murrell
- * @version 10/13/2020
+ * @author lewisb
+ *
  */
 public class WeightedGrade implements Grade {
-	private final Grade gradeToBeDecorated;
-	private double weight;
+
+	private final Grade grade;
+	private final double weight;
 	
 	/**
-	 * 	Constructs a WeightedGrade that weighs the given Grade
-	 * with the default weight of 1.
+	 * Creates a WeightedGrade that decorates the given {@link Grade} by applying the given weight to it.
 	 * 
-	 * @param gradeToBeDecorated	The Grade to weigh
+	 * @param decoratedGrade the {@link Grade} to decorate. Must not be null
+	 * @param weight the weight to apply to decoratedGrade. Must be between 0.0 and 1.0
 	 */
-	public WeightedGrade(Grade gradeToBeDecorated) {
-		this(gradeToBeDecorated, 1);
-	}
-	
-	/**
-	 * 	Constructs a WeightedGrade that weighs the given Grade
-	 * with the given weight.
-	 * 
-	 * @param gradeToBeDecorated	The Grade to weigh
-	 * @param weight				How much to weight the grade
-	 * 
-	 * @precondition				gradeToBeDecorated is not null
-	 * 
-	 * @throws NullPointerException	If gradedToBeDecorated is null
-	 */
-	public WeightedGrade(Grade gradeToBeDecorated, double weight) {
-		if (gradeToBeDecorated == null) {
-			throw new NullPointerException("Cannot construct WeightedGrade with a "
-					+ "null value for gradeToBeDecorated");
+	public WeightedGrade(final Grade decoratedGrade, double weight) {
+		if (decoratedGrade == null) {
+			throw new IllegalArgumentException("grade should not be null");
 		}
-		this.gradeToBeDecorated = gradeToBeDecorated;
-		this.setWeight(weight);
-	}
-	
-	/**
-	 * The Weight to apply to the Grade. Must be between 0 and 1 (inclusive).
-	 * 
-	 * @param weight						The Weight to apply to the Grade
-	 * 
-	 * @precondition						0 <= weight <= 1
-	 * 
-	 * @throws IllegalArgumentException		If weight's range is invalid
-	 */
-	public void setWeight(double weight) {
+		
 		if (weight < 0 || weight > 1) {
-			throw new IllegalArgumentException("Weight must be between 0 and 1 (inclusive)");
+			throw new IllegalArgumentException("weight must be between 0.0 and 1.0");
 		}
+		
+		this.grade = decoratedGrade;
 		this.weight = weight;
 	}
-
-	/**
-	 * See: {@link Grade#getValue()}
-	 */
+	
 	@Override
 	public double getValue() {
-		return this.gradeToBeDecorated.getValue() * this.weight;
+		return this.grade.getValue() * this.weight;
 	}
 
 }

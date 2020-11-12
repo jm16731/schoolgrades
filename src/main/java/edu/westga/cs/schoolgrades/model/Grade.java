@@ -1,19 +1,16 @@
 package edu.westga.cs.schoolgrades.model;
 
 /**
- * 	This interface insures that a single value for the grade of a student 
- * can be obtained from the implementing class.
+ * Represents a Grade as a retrievable value.
  * 
- * @author Greg Murrell
- * @version 10/09/2020
+ * @author lewisb
+ *
  */
 public interface Grade {
-
 	/**
-	 * Gets the value of the student's grade
+	 * The value of this grade.
 	 * 
-	 * @return		Value of the student's grade
+	 * @return the value of this grade.
 	 */
-	public double getValue();
-	
+	double getValue();
 }
